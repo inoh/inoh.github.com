@@ -1,0 +1,13 @@
+# Site settings
+title: Ruby x HTML5
+email: syslink.h.inoue@gmail.com
+description: >
+  このサイトではRubyとHTML5の活用方法を探り公開していきます。
+  めまぐるしく変わるHTML5の仕様を追っていきRubyにフィードバックできることを目標としています。
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "ino-h.com"
+twitter_username: ino_h
+github_username:  inoh
+
+# Build settings
+markdown: kramdown
