@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ruby x HTML5</title>
+    <description>このサイトではRubyとHTML5の活用方法を探り公開していきます。 めまぐるしく変わるHTML5の仕様を追っていきRubyにフィードバックできることを目標としています。
+</description>
+    <link>ino-h.com/</link>
+    <atom:link href="ino-h.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 23 Feb 2015 05:35:30 +0900</pubDate>
+    <lastBuildDate>Mon, 23 Feb 2015 05:35:30 +0900</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Startup Polymer</title>
+        <description>
+</description>
+        <pubDate>Mon, 23 Feb 2015 00:00:00 +0900</pubDate>
+        <link>ino-h.com/2015/02/23/startup-polymer.html</link>
+        <guid isPermaLink="true">ino-h.com/2015/02/23/startup-polymer.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>パッケージ管理ソフトを調べてみた</title>
+        <description>&lt;h1 id=&quot;section&quot;&gt;&lt;strong&gt;パッケージ管理ソフト&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;最近では新しい開発環境や技術検証を行う中でいろいろなパッケージ管理ソフトがでてきました。&lt;br /&gt;
+ネットをコピペしてやるのはよいけどいろいろな管理ソフトがあって管理が煩雑になってきたので調べてみました。&lt;/p&gt;
+
+&lt;h1 id=&quot;os&quot;&gt;&lt;strong&gt;OS系&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;この辺りは新しいものではないけど私がよく使う物をあげてみました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Linux
+    &lt;ul&gt;
+      &lt;li&gt;RPM&lt;br /&gt;
+RedHat用のパッケージ管理システム&lt;/li&gt;
+      &lt;li&gt;Yum&lt;br /&gt;
+RPMを管理するためのシステム&lt;/li&gt;
+      &lt;li&gt;APT&lt;br /&gt;
+Debian用のパッケージ管理システム&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Mac
+    &lt;ul&gt;
+      &lt;li&gt;dmg&lt;br /&gt;
+管理システムではないけど仮想ディスクイメージで複数のファイルがまとめれる&lt;/li&gt;
+      &lt;li&gt;Homebrew&lt;br /&gt;
+OS X用のパッケージ管理システム&lt;br /&gt;
+調べて初めて知ったけどgitとRubyでできているらしい&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Windows
+    &lt;ul&gt;
+      &lt;li&gt;Windowsインストーラー&lt;br /&gt;
+Windows標準のプログラムと機能を管理&lt;/li&gt;
+      &lt;li&gt;Chocolatey&lt;br /&gt;
+標準では入ってないけどコマンドベースでインストール管理ができる&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;&lt;strong&gt;言語系&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;最近増えだしたのが言語系パッケージ管理システムです。&lt;br /&gt;
+新しい言語はだいたい管理ソフトもセットで実装されてますね。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ruby
+    &lt;ul&gt;
+      &lt;li&gt;rubygems&lt;br /&gt;
+Ruby標準パッケージ管理システム  &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;javascript(Node.js)
+    &lt;ul&gt;
+      &lt;li&gt;npm&lt;br /&gt;
+Node.js標準パッケージ管理システム&lt;/li&gt;
+      &lt;li&gt;Bower&lt;br /&gt;
+javascript用のパッケージ管理システム&lt;br /&gt;
+npmでインストール&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Python
+    &lt;ul&gt;
+      &lt;li&gt;pip&lt;br /&gt;
+Python標準パッケージ管理システム  &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;&lt;strong&gt;その他&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GitHub&lt;br /&gt;
+ある意味最近の王道と言える管理システムですね&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;section-3&quot;&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ja.wikipedia.org/wiki/%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0&quot;&gt;http://ja.wikipedia.org/wiki/パッケージ管理ソフト&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 22 Feb 2015 18:45:00 +0900</pubDate>
+        <link>ino-h.com/blog/2015/02/22/package.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/22/package.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>HTMLをカプセル化する</title>
+        <description>&lt;h1 id=&quot;shadowdom&quot;&gt;&lt;strong&gt;ShadowDOM&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;ShadowDOMはstylesheetをカプセル化する仕組みです。&lt;br /&gt;
+ShadowDOMを使用する場合は下記のようにjavascriptでcreateShadowRoot()を使用します。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;contents&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;div#contents&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createShadowRoot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;lt;style&amp;gt;div{color: red;}&amp;lt;/style&amp;gt;&amp;lt;div&amp;gt;Hello!&amp;lt;/div&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;実行結果&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div id=&quot;contents&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+var root = document.querySelector(&#39;div#contents&#39;).createShadowRoot();
+root.innerHTML = &quot;&lt;style&gt;div{color: red;}&lt;/style&gt;&lt;div&gt;Hello!&lt;/div&gt;&quot;;
+&lt;/script&gt;
+
+&lt;p&gt;div要素は他でも使用していますが赤くなるのはHello!のみです。&lt;br /&gt;
+ShadowDOMを使用すれば外部要因を気にせず部品の提供ができます。&lt;/p&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/ja/tutorials/webcomponents/shadowdom/&quot;&gt;http://www.html5rocks.com/ja/tutorials/webcomponents/shadowdom/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 19 Feb 2015 23:01:00 +0900</pubDate>
+        <link>ino-h.com/blog/2015/02/19/startup-shadow-dom.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-shadow-dom.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>標準HTMLテンプレートの使い方</title>
+        <description>&lt;script src=&quot;/js/underscore-min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;sample.html&quot;&gt;&lt;/script&gt;
+
+&lt;h1 id=&quot;template&quot;&gt;&lt;strong&gt;Template&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;Templateはjavascriptから簡単にHTMLを作る仕組みです。&lt;br /&gt;
+有名どころではunderscore.jsのtemplateに近いところがあります。&lt;br /&gt;
+目新しい機能ではないですがTemplate使用有無と比較して気がついた点があったのでそのあたりを紹介します。&lt;/p&gt;
+
+&lt;h1 id=&quot;template-1&quot;&gt;&lt;strong&gt;まずはTemplateを使ってみる&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;ボタンをクリックするとhelloと表示するサンプルです。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onclick=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;message()&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;click me!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;message&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;template&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;say hello!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/template&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;javascript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;template&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;#message&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;importNode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;結果&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div id=&quot;message&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;button onclick=&quot;message()&quot;&gt;click me!&lt;/button&gt;&lt;/p&gt;
+&lt;template&gt;
+  &lt;div&gt;say hello!&lt;/div&gt;
+  &lt;script&gt;alert(&quot;hello&quot;);&lt;/script&gt;
+&lt;/template&gt;
+
+&lt;p&gt;特に問題なく動きます。&lt;/p&gt;
+
+&lt;h1 id=&quot;template-2&quot;&gt;&lt;strong&gt;次にTemplateなしで実現する&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;vanilla&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onclick=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;vanilla()&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;click me!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;hello-template&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/template&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;say&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&amp;lt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;gt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;/script&amp;amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;javascript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vanilla&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;#hello-template&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&amp;amp;lt;/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&amp;amp;gt;/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;#vanilla&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;結果&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div id=&quot;vanilla&quot;&gt;&lt;/div&gt;
+&lt;p&gt;&lt;button onclick=&quot;vanilla()&quot;&gt;click me!&lt;/button&gt;&lt;script id=&quot;hello-template&quot; type=&quot;text/template&quot;&gt;&amp;lt;div&amp;gt;say hello!&amp;lt;/div&amp;gt;&lt;script&gt;alert(&quot;hello&quot;)&lt;/script&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;say hello!の文字は表示されますがalertは実行されませんでした。&lt;br /&gt;
+Templateの場合は取得結果がDOMとして返されます。&lt;br /&gt;
+それに対してscriptタグを使用してテンプレート化した場合は取得結果がテキスト情報でしかないためDOMに変換する必要が有ります。&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;まとめ&lt;/h2&gt;
+
+&lt;p&gt;Template要素を使う意義&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;テキストからDOMを生成せずにjavascriptを含めてテンプレート化できる&lt;/li&gt;
+  &lt;li&gt;scriptタグを使い回していないためかっこをエスケープする必要がない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Templateを使うことでjavascriptを含めてテンプレート化できるのは大きく感じました。&lt;br /&gt;
+従来の方法だとHTMLを流し込んだ後に必要に応じてイベントの登録を行っていました。&lt;br /&gt;
+javascriptを含めることでイベント登録もあわせてできます。&lt;br /&gt;
+使い手の不要な意識が減ることはよいですよね！&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/ja/tutorials/webcomponents/template/&quot;&gt;http://www.html5rocks.com/ja/tutorials/webcomponents/template/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Thu, 19 Feb 2015 05:45:00 +0900</pubDate>
+        <link>ino-h.com/blog/2015/02/19/startup-template.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-template.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title></title>
+        <description>function message() {
+  var content = document.querySelector(&#39;template&#39;).content;
+  document.querySelector(&#39;#message&#39;).appendChild(document.importNode(content, true));
+}
+function vanilla() {
+  var content = String(document.querySelector(&#39;#hello-template&#39;).innerHTML)
+                  .replace(/&amp;lt;/g, &#39;&lt;&#39;).replace(/&amp;gt;/g, &#39;&gt;&#39;);
+  document.querySelector(&#39;#vanilla&#39;).innerHTML = content;
+}
+</description>
+        <pubDate>Thu, 19 Feb 2015 00:00:00 +0900</pubDate>
+        <link>ino-h.com/blog/2015/02/19/sample.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/sample.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>HTML Importsで楽をする方法</title>
+        <description>&lt;h1 id=&quot;html-imports&quot;&gt;&lt;strong&gt;HTML Imports&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;HTML ImportsはHTML,javascript,CSSをまとめてテンプート化する仕組みです。&lt;br /&gt;
+今までもbootstrapのようにjavascriptやCSSを外出ししjavascriptでHTMLを操作することで実現はできていました。&lt;br /&gt;
+ただ一式を制御するために決まった形を毎回コピーペーストするのが一般的だと思います。&lt;br /&gt;
+HTML Importsを使用するとjavascriptやCSSを個別定義することなく下記のようにlinkひとつで定義できます。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;import&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;html-imports.html&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;bootstrap&quot;&gt;&lt;strong&gt;Bootstrapをテンプレート化&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;HTML Importsを使用してBootstrapを簡略化しています。&lt;br /&gt;
+テンプレート部分を見ると大変そうに見えますが実際の実装は少ないことがわかります。&lt;br /&gt;
+これらの簡略化をサーバ側の処理を通さずにできることがすごいことだと思います。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;テンプレート&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://getbootstrap.com/dist/css/bootstrap.min.css&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;padding-top&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;.starter-template&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;15px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--[if lt IE 9]&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;script src=&amp;quot;https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;script src=&amp;quot;https://oss.maxcdn.com/respond/1.4.2/respond.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;![endif]--&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://getbootstrap.com/dist/js/bootstrap.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;template&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;navbar navbar-inverse navbar-fixed-top&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;container&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;navbar-header&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;button&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;navbar-toggle collapsed&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-toggle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;collapse&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#navbar&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-expanded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;false&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-controls=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;navbar&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;sr-only&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Toggle navigation&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;icon-bar&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;icon-bar&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;icon-bar&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;navbar-brand&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Project name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;navbar&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;collapse navbar-collapse&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;nav navbar-nav&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;active&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Home&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#about&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;About&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;#contact&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Contact&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--/.nav-collapse --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/template&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;HTMLElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createdCallback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;link[rel=&amp;quot;import&amp;quot;]&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;template&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;x-bootstrap-header&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;実装&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/js/webcomponents.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;import&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;bootstrap.html&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;x-bootstrap-header&amp;gt;&amp;lt;/x-bootstrap-header&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;container&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;starter-template&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;lead&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Contents&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;実行結果&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;iframe src=&quot;bootstrap-view.html&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;通常HTMLをテンプレート化するためにはサーバで行うかjavascriptでがりがりDOMを作り込んでやるのが一般的でした。&lt;br /&gt;
+HTML Importsを使うことでサーバを通さずにHTML,javascript,CSSを一式テンプレート化するこができ、決まった形式を使い回すのにもとても便利に感じました。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTML Imports
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/ja/tutorials/webcomponents/imports/&quot;&gt;http://www.html5rocks.com/ja/tutorials/webcomponents/imports/&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 11 Feb 2015 05:52:00 +0900</pubDate>
+        <link>ino-h.com/blog/2015/02/11/startup-html-imports.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/11/startup-html-imports.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title></title>
+        <description>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;script src=&quot;/js/webcomponents.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;bootstrap.html&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;x-bootstrap-header&gt;&lt;/x-bootstrap-header&gt;
+    
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;starter-template&quot;&gt;
+        &lt;h1&gt;Header&lt;/h1&gt;
+        &lt;p class=&quot;lead&quot;&gt;Contents&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+  &lt;/body&gt;
+&lt;/html&gt;</description>
+        <pubDate>Wed, 11 Feb 2015 00:00:00 +0900</pubDate>
+        <link>ino-h.com/blog/2015/02/11/bootstrap-view.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/11/bootstrap-view.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title></title>
+        <description>&lt;link rel=&quot;stylesheet&quot; href=&quot;http://getbootstrap.com/dist/css/bootstrap.min.css&quot;&gt;
+&lt;style&gt;
+  body {
+    padding-top: 50px;
+  }
+  .starter-template {
+    padding: 40px 15px;
+    text-align: center;
+  }
+&lt;/style&gt;
+&lt;!--[if lt IE 9]&gt;
+&lt;script src=&quot;https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://oss.maxcdn.com/respond/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;
+&lt;![endif]--&gt;
+
+&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://getbootstrap.com/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;nav class=&quot;navbar navbar-inverse navbar-fixed-top&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+      &lt;div class=&quot;navbar-header&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbar&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;navbar&quot;&gt;
+          &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Project name&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div id=&quot;navbar&quot; class=&quot;collapse navbar-collapse&quot;&gt;
+        &lt;ul class=&quot;nav navbar-nav&quot;&gt;
+          &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;&lt;!--/.nav-collapse --&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+$(function () {
+  var proto = Object.create(HTMLElement.prototype);
+  proto.createdCallback = function() {
+    var link = document.querySelector(&#39;link[rel=&quot;import&quot;]&#39;);
+    var template = link.import.querySelector(&#39;template&#39;);
+    this.innerHTML = template.innerHTML;
+  };
+  document.registerElement(&#39;x-bootstrap-header&#39;, {prototype: proto});
+});
+&lt;/script&gt;</description>
+        <pubDate>Wed, 11 Feb 2015 00:00:00 +0900</pubDate>
+        <link>ino-h.com/blog/2015/02/11/bootstrap.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/11/bootstrap.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Custom Elements で独自要素を作成する</title>
+        <description>&lt;h1 id=&quot;custom-elements&quot;&gt;&lt;strong&gt;Custom Elements&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;Custome Elements では標準タグとは別に&lt;code&gt;&amp;lt;my-tag&amp;gt;&amp;lt;/my-tag&amp;gt;&lt;/code&gt;のような独自のタグを作成することができます。&lt;br /&gt;
+独自のタグを定義するためには&lt;code&gt;document.registerElement()&lt;/code&gt;を使用します。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyTag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;my-tag&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Chrome以外のブラウザではまだまだ未実装なのでpolyfillを実装しておきましょう。  &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;bower_components/webcomponentsjs/webcomponents.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;命名規約&lt;/h1&gt;
+
+&lt;p&gt;Custom Elements では標準タグと切り分けるために命名規約が存在します。&lt;br /&gt;
+独自に作成したタグには必ず’&lt;code&gt;-&lt;/code&gt;‘を含める必要があります。  &lt;/p&gt;
+
+&lt;h4 id=&quot;ok&quot;&gt;OK&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;my-tag&lt;/li&gt;
+  &lt;li&gt;my-original-tag&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;ng&quot;&gt;NG&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;mytag&lt;/li&gt;
+  &lt;li&gt;my_tag&lt;/li&gt;
+  &lt;li&gt;MyTag&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;section-1&quot;&gt;とりあえず使ってみる&lt;/h1&gt;
+
+&lt;p&gt;最初は単純に使ったタグを流し込んでみます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;javascript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyTag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;my-tag&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/* ↑ HTMLElementを継承したものと同じらしい&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;var MyTag = document.registerElement(&amp;#39;my-tag&amp;#39;, {&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;  prototype: Object.create(HTMLElement.prototype)&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;*/&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myTag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;myTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;demo&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;#components&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;components&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;実行結果&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;div id=&quot;demo01&quot;&gt;&lt;/div&gt;&lt;/pre&gt;
+&lt;script&gt;
+var MyTag = document.registerElement(&#39;my-tag&#39;);
+var myTag = new MyTag();
+myTag.innerHTML = &quot;demo&quot;;
+document.querySelector(&quot;#demo01&quot;).appendChild(myTag);
+&lt;/script&gt;
+
+&lt;h1 id=&quot;section-2&quot;&gt;応用編&lt;/h1&gt;
+
+&lt;p&gt;単純にタグを流し込むだけでは面白くないので独自のボタンを作ってみます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;javascript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyButtonProto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;HTMLButtonElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;MyButtonProto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createdCallback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;MyButton&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;click&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;click!&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;MyButton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;my-button&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyButtonProto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;my-button&amp;gt;&amp;lt;/my-button&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;実行結果&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;「MyButton」をクリックしてみてください。&lt;/p&gt;
+
+&lt;script&gt;
+var MyButtonProto = Object.create(HTMLButtonElement.prototype);
+MyButtonProto.createdCallback = function () {
+  this.innerHTML = &quot;MyButton&quot;;
+  this.addEventListener(&#39;click&#39;, function(e) {
+    alert(&#39;click!&#39;);
+  });
+};
+MyButton = document.registerElement(&#39;my-button&#39;, {prototype: MyButtonProto});
+&lt;/script&gt;
+
+&lt;pre&gt;&lt;my-button&gt;&lt;/my-button&gt;&lt;/pre&gt;
+
+&lt;h1 id=&quot;section-3&quot;&gt;まとめ&lt;/h1&gt;
+
+&lt;p&gt;Custom Elements を使うことで要素の種類を明確化できます。&lt;br /&gt;
+プログラムを作る際に特定のクラス名やカスタム属性を拾う必要もなくイベントの登録やスタイルの制御ができます。&lt;br /&gt;
+また独自の属性も追加し放題なのでより柔軟に業務独自の処理が実装できると思います。&lt;/p&gt;
+
+&lt;h1 id=&quot;section-4&quot;&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;polyfill
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://webcomponents.org/&quot;&gt;http://webcomponents.org/&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Custome Elements
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://webcomponents.org/articles/introduction-to-custom-elements/&quot;&gt;http://webcomponents.org/articles/introduction-to-custom-elements/&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/ja/tutorials/webcomponents/customelements/&quot;&gt;http://www.html5rocks.com/ja/tutorials/webcomponents/customelements/&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;リファレンス
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/API/HTMLButtonElement&quot;&gt;https://developer.mozilla.org/ja/docs/Web/API/HTMLButtonElement&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 08 Feb 2015 15:21:33 +0900</pubDate>
+        <link>ino-h.com/blog/2015/02/08/startup-custom-elements.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/08/startup-custom-elements.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>WebComponentsをはじめてみる</title>
+        <description>&lt;h1 id=&quot;webcomponents&quot;&gt;&lt;strong&gt;WebComponentsの機能&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;p&gt;WebComponentsはHTML,javascript,CSSをまとめて部品化するための標準仕様です。&lt;br /&gt;
+まだChrome以外では未実装なブラウザが多いですがpolyfillを使用することにより実装可能です。&lt;br /&gt;
+今回はWebComponentsで何ができるんだ！というところで触ってみた結果をまとめてみました。  &lt;/p&gt;
+
+&lt;p&gt;WebComponentsは大きく４つの機能が存在します。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Custom Elements&lt;/li&gt;
+  &lt;li&gt;HTML Imports&lt;/li&gt;
+  &lt;li&gt;Templates&lt;/li&gt;
+  &lt;li&gt;Shadow DOM&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://caniuse.com/#search=components&quot;&gt;※各種ブラウザのサポート状況はこちら&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;これらの４つの機能をそれぞれ検証してみようと思います。&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 07 Feb 2015 15:21:33 +0900</pubDate>
+        <link>ino-h.com/blog/2015/02/07/startup-webcomponents.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/07/startup-webcomponents.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+  </channel>
+</rss>
