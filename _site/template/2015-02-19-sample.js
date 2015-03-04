@@ -1,8 +1,3 @@
----
-layout: null
-title: null
-categories: blog
----
 function message() {
   var content = document.querySelector('template').content;
   document.querySelector('#message').appendChild(document.importNode(content, true));

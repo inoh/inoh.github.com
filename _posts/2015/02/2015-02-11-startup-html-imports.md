@@ -86,7 +86,7 @@ $(function () {
   <head>
     <meta charset="utf-8">
     <script src="/js/webcomponents.min.js"></script>
-    <link rel="import" href="bootstrap.html">
+    <link rel="import" href="/template/2015-02-11-bootstrap.html">
   </head>
   <body>
 
@@ -105,7 +105,7 @@ $(function () {
 
 - 実行結果
 
-<iframe src="bootstrap-view.html" style="width: 100%; height: 300px;"></iframe>
+<iframe src="/template/2015-02-11-bootstrap-view.html" style="width: 100%; height: 300px;"></iframe>
 
 # **まとめ**
 

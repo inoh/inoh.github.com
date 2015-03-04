@@ -1,0 +1,12 @@
+{% if paginator.previous_page %}
+  <div class="pagination">
+    <a href="{{ paginator.previous_page_path }}" class="previous">前のページ</a>
+  </div>
+  <br/>
+{% endif %}
+{% if paginator.next_page %}
+  <div class="pagination">
+    <a href="{{ paginator.next_page_path }}" class="next">次のページ</a>
+  </div>
+  <br/>
+{% endif %}

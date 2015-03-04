@@ -11,3 +11,6 @@ github_username:  inoh
 
 # Build settings
 markdown: kramdown
+
+paginate: 10
+paginate_path: "/blogs/1/"

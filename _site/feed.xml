@@ -6,8 +6,8 @@
 </description>
     <link>ino-h.com/</link>
     <atom:link href="ino-h.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 04 Mar 2015 05:38:34 +0900</pubDate>
-    <lastBuildDate>Wed, 04 Mar 2015 05:38:34 +0900</lastBuildDate>
+    <pubDate>Thu, 05 Mar 2015 05:14:07 +0900</pubDate>
+    <lastBuildDate>Thu, 05 Mar 2015 05:14:07 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -151,7 +151,7 @@ ShadowDOMを使用すれば外部要因を気にせず部品の提供ができ�
         <title>標準HTMLテンプレートの使い方</title>
         <description>&lt;script src=&quot;/js/underscore-min.js&quot;&gt;&lt;/script&gt;
 
-&lt;script type=&quot;text/javascript&quot; src=&quot;sample.html&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/template/2015-02-19-sample.js&quot;&gt;&lt;/script&gt;
 
 &lt;h1 id=&quot;template&quot;&gt;&lt;strong&gt;Template&lt;/strong&gt;&lt;/h1&gt;
 
@@ -260,27 +260,6 @@ javascriptを含めることでイベント登録もあわせてできます。&
       </item>
     
       <item>
-        <title></title>
-        <description>function message() {
-  var content = document.querySelector(&#39;template&#39;).content;
-  document.querySelector(&#39;#message&#39;).appendChild(document.importNode(content, true));
-}
-function vanilla() {
-  var content = String(document.querySelector(&#39;#hello-template&#39;).innerHTML)
-                  .replace(/&amp;lt;/g, &#39;&lt;&#39;).replace(/&amp;gt;/g, &#39;&gt;&#39;);
-  document.querySelector(&#39;#vanilla&#39;).innerHTML = content;
-}
-</description>
-        <pubDate>Thu, 19 Feb 2015 00:00:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/19/sample.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/sample.html</guid>
-        
-        
-        <category>blog</category>
-        
-      </item>
-    
-      <item>
         <title>HTML Importsで楽をする方法</title>
         <description>&lt;h1 id=&quot;html-imports&quot;&gt;&lt;strong&gt;HTML Imports&lt;/strong&gt;&lt;/h1&gt;
 
@@ -363,7 +342,7 @@ HTML Importsを使用するとjavascriptやCSSを個別定義することなく�
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/js/webcomponents.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;import&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;bootstrap.html&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;import&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/template/2015-02-11-bootstrap.html&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
 
@@ -383,7 +362,7 @@ HTML Importsを使用するとjavascriptやCSSを個別定義することなく�
   &lt;li&gt;実行結果&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;iframe src=&quot;bootstrap-view.html&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/iframe&gt;
+&lt;iframe src=&quot;/template/2015-02-11-bootstrap-view.html&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/iframe&gt;
 
 &lt;h1 id=&quot;section&quot;&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/h1&gt;
 
@@ -402,100 +381,6 @@ HTML Importsを使うことでサーバを通さずにHTML,javascript,CSSを一�
         <pubDate>Wed, 11 Feb 2015 05:52:00 +0900</pubDate>
         <link>ino-h.com/blog/2015/02/11/startup-html-imports.html</link>
         <guid isPermaLink="true">ino-h.com/blog/2015/02/11/startup-html-imports.html</guid>
-        
-        
-        <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;script src=&quot;/js/webcomponents.min.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;import&quot; href=&quot;bootstrap.html&quot;&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-
-    &lt;x-bootstrap-header&gt;&lt;/x-bootstrap-header&gt;
-    
-    &lt;div class=&quot;container&quot;&gt;
-      &lt;div class=&quot;starter-template&quot;&gt;
-        &lt;h1&gt;Header&lt;/h1&gt;
-        &lt;p class=&quot;lead&quot;&gt;Contents&lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    
-  &lt;/body&gt;
-&lt;/html&gt;</description>
-        <pubDate>Wed, 11 Feb 2015 00:00:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/11/bootstrap-view.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/11/bootstrap-view.html</guid>
-        
-        
-        <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title></title>
-        <description>&lt;link rel=&quot;stylesheet&quot; href=&quot;http://getbootstrap.com/dist/css/bootstrap.min.css&quot;&gt;
-&lt;style&gt;
-  body {
-    padding-top: 50px;
-  }
-  .starter-template {
-    padding: 40px 15px;
-    text-align: center;
-  }
-&lt;/style&gt;
-&lt;!--[if lt IE 9]&gt;
-&lt;script src=&quot;https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;https://oss.maxcdn.com/respond/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;
-&lt;![endif]--&gt;
-
-&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://getbootstrap.com/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-
-&lt;template&gt;
-  &lt;nav class=&quot;navbar navbar-inverse navbar-fixed-top&quot;&gt;
-    &lt;div class=&quot;container&quot;&gt;
-      &lt;div class=&quot;navbar-header&quot;&gt;
-        &lt;button type=&quot;button&quot; class=&quot;navbar-toggle collapsed&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbar&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;navbar&quot;&gt;
-          &lt;span class=&quot;sr-only&quot;&gt;Toggle navigation&lt;/span&gt;
-          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
-          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
-          &lt;span class=&quot;icon-bar&quot;&gt;&lt;/span&gt;
-        &lt;/button&gt;
-        &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Project name&lt;/a&gt;
-      &lt;/div&gt;
-      &lt;div id=&quot;navbar&quot; class=&quot;collapse navbar-collapse&quot;&gt;
-        &lt;ul class=&quot;nav navbar-nav&quot;&gt;
-          &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#about&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#contact&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;&lt;!--/.nav-collapse --&gt;
-    &lt;/div&gt;
-  &lt;/nav&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-$(function () {
-  var proto = Object.create(HTMLElement.prototype);
-  proto.createdCallback = function() {
-    var link = document.querySelector(&#39;link[rel=&quot;import&quot;]&#39;);
-    var template = link.import.querySelector(&#39;template&#39;);
-    this.innerHTML = template.innerHTML;
-  };
-  document.registerElement(&#39;x-bootstrap-header&#39;, {prototype: proto});
-});
-&lt;/script&gt;</description>
-        <pubDate>Wed, 11 Feb 2015 00:00:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/11/bootstrap.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/11/bootstrap.html</guid>
         
         
         <category>blog</category>

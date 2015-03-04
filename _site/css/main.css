@@ -142,6 +142,9 @@ pre {
   .icon > svg path {
     fill: #828282; }
 
+.pagination {
+  text-align: right; }
+
 /**
  * Site header
  */

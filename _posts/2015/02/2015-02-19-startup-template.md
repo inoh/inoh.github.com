@@ -5,7 +5,7 @@ date:   2015-02-19 05:45
 categories: blog
 ---
 <script src="/js/underscore-min.js"></script>
-<script type="text/javascript" src="sample.html"></script>
+<script type="text/javascript" src="/template/2015-02-19-sample.js"></script>
 # **Template**  
 
 Templateはjavascriptから簡単にHTMLを作る仕組みです。  
