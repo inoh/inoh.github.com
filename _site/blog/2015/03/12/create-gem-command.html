@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Ruby x HTML5</title>
-  <meta name="description" content="このサイトではRubyとHTML5の活用方法を探り公開していきます。 めまぐるしく変わるHTML5の仕様を追っていきRubyにフィードバックできることを目標としています。
-">
+  <title>GEMで独自コマンドの作り方</title>
+  <meta name="description" content="GEMを作成する際に独自のコマンドを作る際にはまったことの備忘録です。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="ino-h.com/">
+  <link rel="canonical" href="ino-h.com/blog/2015/03/12/create-gem-command.html">
   <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="ino-h.com/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
@@ -52,86 +51,56 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">ブログ</h1>
+  <header class="post-header">
+    <h1 class="post-title">GEMで独自コマンドの作り方</h1>
+    <p class="post-meta">2015/03/12</p>
+  </header>
 
-  
+  <article class="post-content">
+    <p>GEMを作成する際に独自のコマンドを作る際にはまったことの備忘録です。</p>
 
+<p><strong>GEMの空プロジェクト作成</strong></p>
 
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">bundle</span> <span class="n">gem</span> <span class="n">slideparts</span>
+<span class="n">cd</span> <span class="n">slideparts</span></code></pre></div>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">2015/03/12</span>
+<p><strong>binフォルダ作成</strong></p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/03/12/create-gem-command.html">GEMで独自コマンドの作り方</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/03/10</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">mkdir</span> <span class="n">bin</span>
+<span class="n">echo</span> <span class="nb">puts</span> <span class="s2">&quot;test&quot;</span><span class="o">&gt;</span><span class="n">bin</span><span class="o">/</span><span class="n">slide</span></code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/03/10/slide-template.html">ShortSlide刷新計画</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/22</span>
+<p><strong>git管理</strong></p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/22/package.html">パッケージ管理ソフトを調べてみた</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/19</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;first commit&#39;</span></code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/19/startup-shadow-dom.html">HTMLをカプセル化する</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/19</span>
+<p><strong>TODOを修正</strong></p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/19/startup-template.html">標準HTMLテンプレートの使い方</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/11</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">vi</span> <span class="n">slideparts</span><span class="o">.</span><span class="n">gemspec</span>
+<span class="c1"># spec.summaryとspec.descriptionを修正する</span></code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/11/startup-html-imports.html">HTML Importsで楽をする方法</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/08</span>
+<p><strong>GEM作成</strong></p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/08/startup-custom-elements.html">Custom Elements で独自要素を作成する</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/07</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rake</span> <span class="n">build</span>
+<span class="n">rake</span> <span class="n">install</span></code></pre></div>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/07/startup-webcomponents.html">WebComponentsをはじめてみる</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p><strong>動かしてみる</strong></p>
 
-  
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">slide</span>
+<span class="c1"># =&gt; test</span></code></pre></div>
 
+<p><strong>まとめ</strong></p>
 
-  
+<p>なぜ今回こんなブログを書いたかというと最初ネットたどりながらテスト的にGEMのコマンドを試そうとしていました。<br />
+ネットで見るとrubygemsに登録することを前提に書かれていることが多いためgitの登録に触れずに解説してありました。<br />
+そのためgit登録をしないとコマンドが作成されないことにはまってしましました。<br />
+通常はまることはないと思いますがGEMコマンドにはgit必須ということで備忘録です。  </p>
+
+  </article>
+
 </div>
 
       </div>

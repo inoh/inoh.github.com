@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Ruby x HTML5</title>
-  <meta name="description" content="このサイトではRubyとHTML5の活用方法を探り公開していきます。 めまぐるしく変わるHTML5の仕様を追っていきRubyにフィードバックできることを目標としています。
-">
+  <title>ShortSlide刷新計画</title>
+  <meta name="description" content="２年近く前からShortSlideというサービスを作成していました。ShortSlideの目的は「手軽に日記感覚でスライド作成が行える」としていました。  ">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="ino-h.com/">
+  <link rel="canonical" href="ino-h.com/blog/2015/03/10/slide-template.html">
   <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="ino-h.com/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
@@ -52,86 +51,72 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="home">
+        <div class="post">
 
-  <h1 class="page-heading">ブログ</h1>
+  <header class="post-header">
+    <h1 class="post-title">ShortSlide刷新計画</h1>
+    <p class="post-meta">2015/03/10</p>
+  </header>
 
-  
+  <article class="post-content">
+    <p>２年近く前から<a href="https://github.com/inoh/shortslide">ShortSlide</a>というサービスを作成していました。<br />
+ShortSlideの目的は<strong>「手軽に日記感覚でスライド作成が行える」</strong>としていました。  </p>
 
+<p>MARKDOWNを使うことにより手軽に説明資料が作成できましたが、その代償として画像の挿入や動きをつけることが容易にできず見た目の悪さや画像の準備で余計な時間を要するようになりました。<br />
+画像の挿入や動きをつけることはMARKDOWNでは難しく結果としてWebでのGUIに頼ってしまいスタート時点での目的からどんどんずれていってしまいました。  </p>
 
+<p>作り始めた当初は手軽さを優先しており<a href="https://github.com/shower/shower">Shower</a>というシンプルなテンプレートを採用していました。<br />
+あれから約２年、目的もずれてきたので一度アプリをリセットすることにしました。  </p>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">2015/03/12</span>
+<p>新しいスライド作成候補は下記のように考えています。  </p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/03/12/create-gem-command.html">GEMで独自コマンドの作り方</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/03/10</span>
+<p><strong>テンプレート</strong></p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/03/10/slide-template.html">ShortSlide刷新計画</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/22</span>
+<ul>
+  <li>Reveal.js<br />
+シンプルな文法だが機能が豊富なので採用しました。<br />
+Impress.jsだと人気もあり良さそうかと思いましたが使う人を選びそうあので不採用にしました。</li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/22/package.html">パッケージ管理ソフトを調べてみた</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/19</span>
+<p><strong>LL言語</strong></p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/19/startup-shadow-dom.html">HTMLをカプセル化する</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/19</span>
+<ul>
+  <li>Haml<br />
+最終的にWebComponentsを混ぜたかったので融通が効きやすくHTML5の新しい要素にも対応できるので採用しました。<br />
+本当はMARKDOWNだとみんなが知ってるのでよかったのですが少し変わった要素を使うと結局HTMLになってしますので不採用にしました。<br />
+でもまだ悩み中…</li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/19/startup-template.html">標準HTMLテンプレートの使い方</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/11</span>
+<p><strong>サーバ</strong></p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/11/startup-html-imports.html">HTML Importsで楽をする方法</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/08</span>
+<ul>
+  <li>Grape<br />
+サーバはREST APIを返すだけに限定する。<br />
+状況によってrailsの主要機能をそぎ落としてActiveRecordのみで使用するかも。</li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/08/startup-custom-elements.html">Custom Elements で独自要素を作成する</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">2015/02/07</span>
+<p><strong>その他の野望</strong></p>
 
-        <h2>
-          <a class="post-link" href="/blog/2015/02/07/startup-webcomponents.html">WebComponentsをはじめてみる</a>
-        </h2>
-      </li>
-    
-  </ul>
+<ul>
+  <li>WebComponetsを使用しスライドを部品化</li>
+  <li>作成はテキストのみで管理、作成を行いたいがプレゼンはAngularJSを使用しシングルページで作成したい</li>
+  <li>スライドの保存はAWSのMongoDB使う</li>
+</ul>
 
-  
+<p><strong>今後参考にするかも</strong></p>
 
+<ul>
+  <li><a href="http://qiita.com/hibara/items/78454f6c70c55e7aa612#3-17">MARKDOWN</a></li>
+  <li><a href="http://yuumi3.hatenablog.com/entry/2015/01/30/150451">Grape</a></li>
+</ul>
 
-  
+<p><strong>さいご</strong></p>
+
+<p>２年が経つとShortSlideの問題点が出てきてプロダクトの限界も見てきました。<br />
+世の中の技術も大きく変わってきたので次期のプロダクトとしてどんどん新しいことを取り込み作成したいと思います。</p>
+
+  </article>
+
 </div>
 
       </div>

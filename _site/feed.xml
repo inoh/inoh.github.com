@@ -6,9 +6,127 @@
 </description>
     <link>ino-h.com/</link>
     <atom:link href="ino-h.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 05 Mar 2015 05:14:07 +0900</pubDate>
-    <lastBuildDate>Thu, 05 Mar 2015 05:14:07 +0900</lastBuildDate>
+    <pubDate>Tue, 17 Mar 2015 05:19:58 +0900</pubDate>
+    <lastBuildDate>Tue, 17 Mar 2015 05:19:58 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>GEMで独自コマンドの作り方</title>
+        <description>&lt;p&gt;GEMを作成する際に独自のコマンドを作る際にはまったことの備忘録です。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;GEMの空プロジェクト作成&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;bundle&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slideparts&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slideparts&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;binフォルダ作成&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slide&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;git管理&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;first commit&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;TODOを修正&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;vi&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slideparts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gemspec&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# spec.summaryとspec.descriptionを修正する&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;GEM作成&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;rake&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;build&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;rake&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;install&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;動かしてみる&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;slide&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# =&amp;gt; test&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;なぜ今回こんなブログを書いたかというと最初ネットたどりながらテスト的にGEMのコマンドを試そうとしていました。&lt;br /&gt;
+ネットで見るとrubygemsに登録することを前提に書かれていることが多いためgitの登録に触れずに解説してありました。&lt;br /&gt;
+そのためgit登録をしないとコマンドが作成されないことにはまってしましました。&lt;br /&gt;
+通常はまることはないと思いますがGEMコマンドにはgit必須ということで備忘録です。  &lt;/p&gt;
+</description>
+        <pubDate>Thu, 12 Mar 2015 05:24:00 +0900</pubDate>
+        <link>ino-h.com/blog/2015/03/12/create-gem-command.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/03/12/create-gem-command.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>ShortSlide刷新計画</title>
+        <description>&lt;p&gt;２年近く前から&lt;a href=&quot;https://github.com/inoh/shortslide&quot;&gt;ShortSlide&lt;/a&gt;というサービスを作成していました。&lt;br /&gt;
+ShortSlideの目的は&lt;strong&gt;「手軽に日記感覚でスライド作成が行える」&lt;/strong&gt;としていました。  &lt;/p&gt;
+
+&lt;p&gt;MARKDOWNを使うことにより手軽に説明資料が作成できましたが、その代償として画像の挿入や動きをつけることが容易にできず見た目の悪さや画像の準備で余計な時間を要するようになりました。&lt;br /&gt;
+画像の挿入や動きをつけることはMARKDOWNでは難しく結果としてWebでのGUIに頼ってしまいスタート時点での目的からどんどんずれていってしまいました。  &lt;/p&gt;
+
+&lt;p&gt;作り始めた当初は手軽さを優先しており&lt;a href=&quot;https://github.com/shower/shower&quot;&gt;Shower&lt;/a&gt;というシンプルなテンプレートを採用していました。&lt;br /&gt;
+あれから約２年、目的もずれてきたので一度アプリをリセットすることにしました。  &lt;/p&gt;
+
+&lt;p&gt;新しいスライド作成候補は下記のように考えています。  &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;テンプレート&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Reveal.js&lt;br /&gt;
+シンプルな文法だが機能が豊富なので採用しました。&lt;br /&gt;
+Impress.jsだと人気もあり良さそうかと思いましたが使う人を選びそうあので不採用にしました。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;LL言語&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Haml&lt;br /&gt;
+最終的にWebComponentsを混ぜたかったので融通が効きやすくHTML5の新しい要素にも対応できるので採用しました。&lt;br /&gt;
+本当はMARKDOWNだとみんなが知ってるのでよかったのですが少し変わった要素を使うと結局HTMLになってしますので不採用にしました。&lt;br /&gt;
+でもまだ悩み中…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;サーバ&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Grape&lt;br /&gt;
+サーバはREST APIを返すだけに限定する。&lt;br /&gt;
+状況によってrailsの主要機能をそぎ落としてActiveRecordのみで使用するかも。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;その他の野望&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;WebComponetsを使用しスライドを部品化&lt;/li&gt;
+  &lt;li&gt;作成はテキストのみで管理、作成を行いたいがプレゼンはAngularJSを使用しシングルページで作成したい&lt;/li&gt;
+  &lt;li&gt;スライドの保存はAWSのMongoDB使う&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;今後参考にするかも&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://qiita.com/hibara/items/78454f6c70c55e7aa612#3-17&quot;&gt;MARKDOWN&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://yuumi3.hatenablog.com/entry/2015/01/30/150451&quot;&gt;Grape&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;さいご&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;２年が経つとShortSlideの問題点が出てきてプロダクトの限界も見てきました。&lt;br /&gt;
+世の中の技術も大きく変わってきたので次期のプロダクトとしてどんどん新しいことを取り込み作成したいと思います。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 10 Mar 2015 12:52:00 +0900</pubDate>
+        <link>ino-h.com/blog/2015/03/10/slide-template.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/03/10/slide-template.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>パッケージ管理ソフトを調べてみた</title>
