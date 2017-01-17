@@ -10,8 +10,8 @@
   <meta name="description" content="Custom Elements">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="ino-h.com/blog/2015/02/08/startup-custom-elements.html">
-  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="ino-h.com/feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/blog/2015/02/08/startup-custom-elements.html">
+  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="http://localhost:4000/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
 
@@ -61,19 +61,19 @@
   <article class="post-content">
     <h1 id="custom-elements"><strong>Custom Elements</strong></h1>
 
-<p>Custome Elements では標準タグとは別に<code>&lt;my-tag&gt;&lt;/my-tag&gt;</code>のような独自のタグを作成することができます。<br />
-独自のタグを定義するためには<code>document.registerElement()</code>を使用します。</p>
+<p>Custome Elements では標準タグとは別に<code class="highlighter-rouge">&lt;my-tag&gt;&lt;/my-tag&gt;</code>のような独自のタグを作成することができます。<br />
+独自のタグを定義するためには<code class="highlighter-rouge">document.registerElement()</code>を使用します。</p>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">MyTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">registerElement</span><span class="p">(</span><span class="s1">&#39;my-tag&#39;</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">MyTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">registerElement</span><span class="p">(</span><span class="s1">'my-tag'</span><span class="p">);</span></code></pre></figure>
 
-<p>Chrome以外のブラウザではまだまだ未実装なのでpolyfillを実装しておきましょう。  </p>
+<p>Chrome以外のブラウザではまだまだ未実装なのでpolyfillを実装しておきましょう。</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;bower_components/webcomponentsjs/webcomponents.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"bower_components/webcomponentsjs/webcomponents.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
 
-<h1 id="section">命名規約</h1>
+<h1 id="命名規約">命名規約</h1>
 
 <p>Custom Elements では標準タグと切り分けるために命名規約が存在します。<br />
-独自に作成したタグには必ず’<code>-</code>‘を含める必要があります。  </p>
+独自に作成したタグには必ず’<code class="highlighter-rouge">-</code>‘を含める必要があります。</p>
 
 <h4 id="ok">OK</h4>
 
@@ -90,7 +90,7 @@
   <li>MyTag</li>
 </ul>
 
-<h1 id="section-1">とりあえず使ってみる</h1>
+<h1 id="とりあえず使ってみる">とりあえず使ってみる</h1>
 
 <p>最初は単純に使ったタグを流し込んでみます。</p>
 
@@ -98,21 +98,21 @@
   <li>javascript</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">MyTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">registerElement</span><span class="p">(</span><span class="s1">&#39;my-tag&#39;</span><span class="p">);</span>
-<span class="cm">/* ↑ HTMLElementを継承したものと同じらしい</span>
-<span class="cm">var MyTag = document.registerElement(&#39;my-tag&#39;, {</span>
-<span class="cm">  prototype: Object.create(HTMLElement.prototype)</span>
-<span class="cm">});</span>
-<span class="cm">*/</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">MyTag</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">registerElement</span><span class="p">(</span><span class="s1">'my-tag'</span><span class="p">);</span>
+<span class="cm">/* ↑ HTMLElementを継承したものと同じらしい
+var MyTag = document.registerElement('my-tag', {
+  prototype: Object.create(HTMLElement.prototype)
+});
+*/</span>
 <span class="kd">var</span> <span class="nx">myTag</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyTag</span><span class="p">();</span>
-<span class="nx">myTag</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;demo&quot;</span><span class="p">;</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;#components&quot;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">myTag</span><span class="p">);</span></code></pre></div>
+<span class="nx">myTag</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"demo"</span><span class="p">;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">"#components"</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">myTag</span><span class="p">);</span></code></pre></figure>
 
 <ul>
   <li>HTML</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;components&quot;</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"components"</span><span class="nt">&gt;&lt;/div&gt;</span></code></pre></figure>
 
 <ul>
   <li>実行結果</li>
@@ -126,7 +126,7 @@ myTag.innerHTML = "demo";
 document.querySelector("#demo01").appendChild(myTag);
 </script>
 
-<h1 id="section-2">応用編</h1>
+<h1 id="応用編">応用編</h1>
 
 <p>単純にタグを流し込むだけでは面白くないので独自のボタンを作ってみます。</p>
 
@@ -134,20 +134,20 @@ document.querySelector("#demo01").appendChild(myTag);
   <li>javascript</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">MyButtonProto</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">HTMLButtonElement</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">MyButtonProto</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">HTMLButtonElement</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
 <span class="nx">MyButtonProto</span><span class="p">.</span><span class="nx">createdCallback</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;MyButton&quot;</span><span class="p">;</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;click!&#39;</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"MyButton"</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">'click!'</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">};</span>
-<span class="nx">MyButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">registerElement</span><span class="p">(</span><span class="s1">&#39;my-button&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">prototype</span><span class="o">:</span> <span class="nx">MyButtonProto</span><span class="p">});</span></code></pre></div>
+<span class="nx">MyButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">registerElement</span><span class="p">(</span><span class="s1">'my-button'</span><span class="p">,</span> <span class="p">{</span><span class="na">prototype</span><span class="p">:</span> <span class="nx">MyButtonProto</span><span class="p">});</span></code></pre></figure>
 
 <ul>
   <li>HTML</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;my-button&gt;&lt;/my-button&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;my-button&gt;&lt;/my-button&gt;</span></code></pre></figure>
 
 <ul>
   <li>実行結果</li>
@@ -168,13 +168,13 @@ MyButton = document.registerElement('my-button', {prototype: MyButtonProto});
 
 <pre><my-button></my-button></pre>
 
-<h1 id="section-3">まとめ</h1>
+<h1 id="まとめ">まとめ</h1>
 
 <p>Custom Elements を使うことで要素の種類を明確化できます。<br />
 プログラムを作る際に特定のクラス名やカスタム属性を拾う必要もなくイベントの登録やスタイルの制御ができます。<br />
 また独自の属性も追加し放題なのでより柔軟に業務独自の処理が実装できると思います。</p>
 
-<h1 id="section-4"><strong>参考</strong></h1>
+<h1 id="参考"><strong>参考</strong></h1>
 <ul>
   <li>polyfill
     <ul>

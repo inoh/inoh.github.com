@@ -10,8 +10,8 @@
   <meta name="description" content="Template">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="ino-h.com/blog/2015/02/19/startup-template.html">
-  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="ino-h.com/feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/blog/2015/02/19/startup-template.html">
+  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="http://localhost:4000/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
 
@@ -69,7 +69,7 @@
 有名どころではunderscore.jsのtemplateに近いところがあります。<br />
 目新しい機能ではないですがTemplate使用有無と比較して気がついた点があったのでそのあたりを紹介します。</p>
 
-<h1 id="template-1"><strong>まずはTemplateを使ってみる</strong></h1>
+<h1 id="まずはtemplateを使ってみる"><strong>まずはTemplateを使ってみる</strong></h1>
 
 <p>ボタンをクリックするとhelloと表示するサンプルです。</p>
 
@@ -77,21 +77,21 @@
   <li>HTML</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">&quot;message()&quot;</span><span class="nt">&gt;</span>click me!<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;message&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"message()"</span><span class="nt">&gt;</span>click me!<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"message"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;template&gt;</span>
   <span class="nt">&lt;div&gt;</span>say hello!<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;script&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">);</span><span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;/template&gt;</span></code></pre></div>
+  <span class="nt">&lt;script&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">);</span><span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/template&gt;</span></code></pre></figure>
 
 <ul>
   <li>javascript</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">message</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;template&#39;</span><span class="p">).</span><span class="nx">content</span><span class="p">;</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#message&#39;</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">importNode</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
-<span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">message</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'template'</span><span class="p">).</span><span class="nx">content</span><span class="p">;</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#message'</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">importNode</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
+<span class="p">}</span></code></pre></figure>
 
 <ul>
   <li>結果</li>
@@ -106,28 +106,28 @@
 
 <p>特に問題なく動きます。</p>
 
-<h1 id="template-2"><strong>次にTemplateなしで実現する</strong></h1>
+<h1 id="次にtemplateなしで実現する"><strong>次にTemplateなしで実現する</strong></h1>
 
 <ul>
   <li>HTML</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;vanilla&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">&quot;vanilla()&quot;</span><span class="nt">&gt;</span>click me!<span class="nt">&lt;/button&gt;</span>
-<span class="nt">&lt;script </span><span class="na">id=</span><span class="s">&quot;hello-template&quot;</span> <span class="na">type=</span><span class="s">&quot;text/template&quot;</span><span class="nt">&gt;</span>
-  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">say</span> <span class="nx">hello</span><span class="o">!&lt;</span><span class="err">/div&gt;</span>
-  <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">script</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">);</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="err">/script&amp;gt;</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"vanilla"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"vanilla()"</span><span class="nt">&gt;</span>click me!<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;script </span><span class="na">id=</span><span class="s">"hello-template"</span> <span class="na">type=</span><span class="s">"text/template"</span><span class="nt">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">say</span> <span class="nx">hello</span><span class="o">!&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="nx">script</span><span class="o">&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="nx">alert</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">);</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="sr">/script&amp;gt</span><span class="err">;
+</span><span class="nt">&lt;/script&gt;</span></code></pre></figure>
 
 <ul>
   <li>javascript</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">vanilla</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#hello-template&#39;</span><span class="p">).</span><span class="nx">innerHTML</span><span class="p">)</span>
-                  <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;lt;/g</span><span class="p">,</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;gt;/g</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">);</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;#vanilla&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">content</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">vanilla</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#hello-template'</span><span class="p">).</span><span class="nx">innerHTML</span><span class="p">)</span>
+                  <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;lt;/g</span><span class="p">,</span> <span class="s1">'&lt;'</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/&amp;gt;/g</span><span class="p">,</span> <span class="s1">'&gt;'</span><span class="p">);</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#vanilla'</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">content</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
 
 <ul>
   <li>結果</li>
@@ -140,7 +140,7 @@
 Templateの場合は取得結果がDOMとして返されます。<br />
 それに対してscriptタグを使用してテンプレート化した場合は取得結果がテキスト情報でしかないためDOMに変換する必要が有ります。</p>
 
-<h2 id="section">まとめ</h2>
+<h2 id="まとめ">まとめ</h2>
 
 <p>Template要素を使う意義</p>
 
@@ -154,7 +154,7 @@ Templateの場合は取得結果がDOMとして返されます。<br />
 javascriptを含めることでイベント登録もあわせてできます。<br />
 使い手の不要な意識が減ることはよいですよね！</p>
 
-<h2 id="section-1">参考</h2>
+<h2 id="参考">参考</h2>
 
 <ul>
   <li><a href="http://www.html5rocks.com/ja/tutorials/webcomponents/template/">http://www.html5rocks.com/ja/tutorials/webcomponents/template/</a></li>

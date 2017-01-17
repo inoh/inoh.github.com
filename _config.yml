@@ -15,4 +15,4 @@ markdown: kramdown
 paginate: 10
 paginate_path: "/blogs/1/"
 
-theme: jekyll-theme-architect
+gems: [jekyll-paginate]

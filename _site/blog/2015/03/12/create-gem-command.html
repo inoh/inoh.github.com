@@ -10,8 +10,8 @@
   <meta name="description" content="GEMを作成する際に独自のコマンドを作る際にはまったことの備忘録です。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="ino-h.com/blog/2015/03/12/create-gem-command.html">
-  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="ino-h.com/feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/blog/2015/03/12/create-gem-command.html">
+  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="http://localhost:4000/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
 
@@ -63,41 +63,41 @@
 
 <p><strong>GEMの空プロジェクト作成</strong></p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">bundle</span> <span class="n">gem</span> <span class="n">slideparts</span>
-<span class="n">cd</span> <span class="n">slideparts</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">bundle</span> <span class="n">gem</span> <span class="n">slideparts</span>
+<span class="n">cd</span> <span class="n">slideparts</span></code></pre></figure>
 
 <p><strong>binフォルダ作成</strong></p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">mkdir</span> <span class="n">bin</span>
-<span class="n">echo</span> <span class="nb">puts</span> <span class="s2">&quot;test&quot;</span><span class="o">&gt;</span><span class="n">bin</span><span class="o">/</span><span class="n">slide</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">mkdir</span> <span class="n">bin</span>
+<span class="n">echo</span> <span class="nb">puts</span> <span class="s2">"test"</span><span class="o">&gt;</span><span class="n">bin</span><span class="o">/</span><span class="n">slide</span></code></pre></figure>
 
 <p><strong>git管理</strong></p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">init</span>
-<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
-<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">&#39;first commit&#39;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+<span class="nf">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s1">'first commit'</span></code></pre></figure>
 
 <p><strong>TODOを修正</strong></p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">vi</span> <span class="n">slideparts</span><span class="o">.</span><span class="n">gemspec</span>
-<span class="c1"># spec.summaryとspec.descriptionを修正する</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">vi</span> <span class="n">slideparts</span><span class="p">.</span><span class="nf">gemspec</span>
+<span class="c1"># spec.summaryとspec.descriptionを修正する</span></code></pre></figure>
 
 <p><strong>GEM作成</strong></p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rake</span> <span class="n">build</span>
-<span class="n">rake</span> <span class="n">install</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">rake</span> <span class="n">build</span>
+<span class="n">rake</span> <span class="n">install</span></code></pre></figure>
 
 <p><strong>動かしてみる</strong></p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">slide</span>
-<span class="c1"># =&gt; test</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">slide</span>
+<span class="c1"># =&gt; test</span></code></pre></figure>
 
 <p><strong>まとめ</strong></p>
 
 <p>なぜ今回こんなブログを書いたかというと最初ネットたどりながらテスト的にGEMのコマンドを試そうとしていました。<br />
 ネットで見るとrubygemsに登録することを前提に書かれていることが多いためgitの登録に触れずに解説してありました。<br />
 そのためgit登録をしないとコマンドが作成されないことにはまってしましました。<br />
-通常はまることはないと思いますがGEMコマンドにはgit必須ということで備忘録です。  </p>
+通常はまることはないと思いますがGEMコマンドにはgit必須ということで備忘録です。</p>
 
   </article>
 

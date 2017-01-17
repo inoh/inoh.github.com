@@ -10,8 +10,8 @@
   <meta name="description" content="ShadowDOM">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="ino-h.com/blog/2015/02/19/startup-shadow-dom.html">
-  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="ino-h.com/feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/blog/2015/02/19/startup-shadow-dom.html">
+  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="http://localhost:4000/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
 
@@ -68,11 +68,11 @@ ShadowDOMを使用する場合は下記のようにjavascriptでcreateShadowRoot
   <li>HTML</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;contents&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"contents"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;script&gt;</span>
-<span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;div#contents&#39;</span><span class="p">).</span><span class="nx">createShadowRoot</span><span class="p">();</span>
-<span class="nx">root</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;&lt;style&gt;div{color: red;}&lt;/style&gt;&lt;div&gt;Hello!&lt;/div&gt;&quot;</span><span class="p">;</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
+<span class="kd">var</span> <span class="nx">root</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'div#contents'</span><span class="p">).</span><span class="nx">createShadowRoot</span><span class="p">();</span>
+<span class="nx">root</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"&lt;style&gt;div{color: red;}&lt;/style&gt;&lt;div&gt;Hello!&lt;/div&gt;"</span><span class="p">;</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></figure>
 
 <ul>
   <li>実行結果</li>
@@ -87,7 +87,7 @@ root.innerHTML = "<style>div{color: red;}</style><div>Hello!</div>";
 <p>div要素は他でも使用していますが赤くなるのはHello!のみです。<br />
 ShadowDOMを使用すれば外部要因を気にせず部品の提供ができます。</p>
 
-<h1 id="section"><strong>参考</strong></h1>
+<h1 id="参考"><strong>参考</strong></h1>
 
 <ul>
   <li><a href="http://www.html5rocks.com/ja/tutorials/webcomponents/shadowdom/">http://www.html5rocks.com/ja/tutorials/webcomponents/shadowdom/</a></li>

@@ -10,8 +10,8 @@
   <meta name="description" content="HTML Imports">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="ino-h.com/blog/2015/02/11/startup-html-imports.html">
-  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="ino-h.com/feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/blog/2015/02/11/startup-html-imports.html">
+  <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="http://localhost:4000/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
 
@@ -66,9 +66,9 @@
 ただ一式を制御するために決まった形を毎回コピーペーストするのが一般的だと思います。<br />
 HTML Importsを使用するとjavascriptやCSSを個別定義することなく下記のようにlinkひとつで定義できます。</p>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;import&quot;</span> <span class="na">href=</span><span class="s">&quot;html-imports.html&quot;</span><span class="nt">&gt;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"import"</span> <span class="na">href=</span><span class="s">"html-imports.html"</span><span class="nt">&gt;</span></code></pre></figure>
 
-<h1 id="bootstrap"><strong>Bootstrapをテンプレート化</strong></h1>
+<h1 id="bootstrapをテンプレート化"><strong>Bootstrapをテンプレート化</strong></h1>
 
 <p>HTML Importsを使用してBootstrapを簡略化しています。<br />
 テンプレート部分を見ると大変そうに見えますが実際の実装は少ないことがわかります。<br />
@@ -78,41 +78,41 @@ HTML Importsを使用するとjavascriptやCSSを個別定義することなく�
   <li>テンプレート</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;http://getbootstrap.com/dist/css/bootstrap.min.css&quot;</span><span class="nt">&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"http://getbootstrap.com/dist/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;style&gt;</span>
   <span class="nt">body</span> <span class="p">{</span>
-    <span class="k">padding-top</span><span class="o">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">padding-top</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="nc">.starter-template</span> <span class="p">{</span>
-    <span class="k">padding</span><span class="o">:</span> <span class="m">40px</span> <span class="m">15px</span><span class="p">;</span>
-    <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">40px</span> <span class="m">15px</span><span class="p">;</span>
+    <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
   <span class="p">}</span>
 <span class="nt">&lt;/style&gt;</span>
-<span class="c">&lt;!--[if lt IE 9]&gt;</span>
-<span class="c">&lt;script src=&quot;https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js&quot;&gt;&lt;/script&gt;</span>
-<span class="c">&lt;script src=&quot;https://oss.maxcdn.com/respond/1.4.2/respond.min.js&quot;&gt;&lt;/script&gt;</span>
-<span class="c">&lt;![endif]--&gt;</span>
+<span class="c">&lt;!--[if lt IE 9]&gt;
+&lt;script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</span>
 
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;http://getbootstrap.com/dist/js/bootstrap.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://getbootstrap.com/dist/js/bootstrap.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 
 <span class="nt">&lt;template&gt;</span>
-  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;navbar navbar-inverse navbar-fixed-top&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;navbar-header&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">class=</span><span class="s">&quot;navbar-toggle collapsed&quot;</span> <span class="na">data-toggle=</span><span class="s">&quot;collapse&quot;</span> <span class="na">data-target=</span><span class="s">&quot;#navbar&quot;</span> <span class="na">aria-expanded=</span><span class="s">&quot;false&quot;</span> <span class="na">aria-controls=</span><span class="s">&quot;navbar&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;sr-only&quot;</span><span class="nt">&gt;</span>Toggle navigation<span class="nt">&lt;/span&gt;</span>
-          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-bar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-bar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
-          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-bar&quot;</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-inverse navbar-fixed-top"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">data-toggle=</span><span class="s">"collapse"</span> <span class="na">data-target=</span><span class="s">"#navbar"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span> <span class="na">aria-controls=</span><span class="s">"navbar"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Toggle navigation<span class="nt">&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-bar"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-bar"</span><span class="nt">&gt;&lt;/span&gt;</span>
+          <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-bar"</span><span class="nt">&gt;&lt;/span&gt;</span>
         <span class="nt">&lt;/button&gt;</span>
-        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">&quot;navbar-brand&quot;</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Project name<span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Project name<span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;navbar&quot;</span> <span class="na">class=</span><span class="s">&quot;collapse navbar-collapse&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;nav navbar-nav&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#about&quot;</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#contact&quot;</span><span class="nt">&gt;</span>Contact<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"navbar"</span> <span class="na">class=</span><span class="s">"collapse navbar-collapse"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#about"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#contact"</span><span class="nt">&gt;</span>Contact<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
         <span class="nt">&lt;/ul&gt;</span>
       <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!--/.nav-collapse --&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
@@ -123,38 +123,38 @@ HTML Importsを使用するとjavascriptやCSSを個別定義することなく�
 <span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">proto</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">HTMLElement</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
   <span class="nx">proto</span><span class="p">.</span><span class="nx">createdCallback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;link[rel=&quot;import&quot;]&#39;</span><span class="p">);</span>
-    <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">link</span><span class="p">.</span><span class="kr">import</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;template&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">link</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'link[rel="import"]'</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">link</span><span class="p">.</span><span class="kr">import</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'template'</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
   <span class="p">};</span>
-  <span class="nb">document</span><span class="p">.</span><span class="nx">registerElement</span><span class="p">(</span><span class="s1">&#39;x-bootstrap-header&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">prototype</span><span class="o">:</span> <span class="nx">proto</span><span class="p">});</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">registerElement</span><span class="p">(</span><span class="s1">'x-bootstrap-header'</span><span class="p">,</span> <span class="p">{</span><span class="na">prototype</span><span class="p">:</span> <span class="nx">proto</span><span class="p">});</span>
 <span class="p">});</span>
-<span class="nt">&lt;/script&gt;</span></code></pre></div>
+<span class="nt">&lt;/script&gt;</span></code></pre></figure>
 
 <ul>
   <li>実装</li>
 </ul>
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
   <span class="nt">&lt;head&gt;</span>
-    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/js/webcomponents.min.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;import&quot;</span> <span class="na">href=</span><span class="s">&quot;/template/2015-02-11-bootstrap.html&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/js/webcomponents.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"import"</span> <span class="na">href=</span><span class="s">"/template/2015-02-11-bootstrap.html"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
 
     <span class="nt">&lt;x-bootstrap-header&gt;&lt;/x-bootstrap-header&gt;</span>
     
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;container&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;starter-template&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"starter-template"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;h1&gt;</span>Header<span class="nt">&lt;/h1&gt;</span>
-        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;lead&quot;</span><span class="nt">&gt;</span>Contents<span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"lead"</span><span class="nt">&gt;</span>Contents<span class="nt">&lt;/p&gt;</span>
       <span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
     
   <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span></code></pre></div>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
 
 <ul>
   <li>実行結果</li>
@@ -162,12 +162,12 @@ HTML Importsを使用するとjavascriptやCSSを個別定義することなく�
 
 <iframe src="/template/2015-02-11-bootstrap-view.html" style="width: 100%; height: 300px;"></iframe>
 
-<h1 id="section"><strong>まとめ</strong></h1>
+<h1 id="まとめ"><strong>まとめ</strong></h1>
 
 <p>通常HTMLをテンプレート化するためにはサーバで行うかjavascriptでがりがりDOMを作り込んでやるのが一般的でした。<br />
 HTML Importsを使うことでサーバを通さずにHTML,javascript,CSSを一式テンプレート化するこができ、決まった形式を使い回すのにもとても便利に感じました。</p>
 
-<h1 id="section-1"><strong>参考</strong></h1>
+<h1 id="参考"><strong>参考</strong></h1>
 <ul>
   <li>HTML Imports
     <ul>

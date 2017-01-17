@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>WebComponentsをはじめてみる</title>
-  <meta name="description" content="WebComponentsの機能">
+  <title>Raspberry Pi3 でLチカをやってみた</title>
+  <meta name="description" content="イベントの景品でDushButtonをいただいたので何かIoTらしいことができないかと思っていました。DushButtonだけでは何もできないのでとりあえずAmazonでラズパイ３を購入。初めてハード制御ということでLチカをやってみました。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/blog/2015/02/07/startup-webcomponents.html">
+  <link rel="canonical" href="http://localhost:4000/blog/2017/01/18/l-chika.html">
   <link rel="alternate" type="application/rss+xml" title="Ruby x HTML5" href="http://localhost:4000/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
@@ -54,30 +54,94 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">WebComponentsをはじめてみる</h1>
-    <p class="post-meta">2015/02/07</p>
+    <h1 class="post-title">Raspberry Pi3 でLチカをやってみた</h1>
+    <p class="post-meta">2017/01/18</p>
   </header>
 
   <article class="post-content">
-    <h1 id="webcomponentsの機能"><strong>WebComponentsの機能</strong></h1>
+    <p>イベントの景品でDushButtonをいただいたので何かIoTらしいことができないかと思っていました。<br />
+DushButtonだけでは何もできないのでとりあえずAmazonでラズパイ３を購入。<br />
+初めてハード制御ということでLチカをやってみました。</p>
 
-<p>WebComponentsはHTML,javascript,CSSをまとめて部品化するための標準仕様です。<br />
-まだChrome以外では未実装なブラウザが多いですがpolyfillを使用することにより実装可能です。<br />
-今回はWebComponentsで何ができるんだ！というところで触ってみた結果をまとめてみました。</p>
+<h2 id="今回やらないこと">今回やらないこと</h2>
 
-<p>WebComponentsは大きく４つの機能が存在します。</p>
+<p>最初の初期セットアップになる下記は今回やりません。<br />
+なので終わっていることが前提になります。</p>
 
 <ul>
-  <li>Custom Elements</li>
-  <li>HTML Imports</li>
-  <li>Templates</li>
-  <li>Shadow DOM</li>
+  <li>OSのインストール</li>
+  <li>ネットワークの設定</li>
 </ul>
 
-<p><a href="http://caniuse.com/#search=components">※各種ブラウザのサポート状況はこちら</a></p>
+<h2 id="ラズパイのピン種類">ラズパイのピン種類</h2>
 
-<p>これらの４つの機能をそれぞれ検証してみようと思います。</p>
+<h4 id="配線仕様">配線仕様</h4>
 
+<p>https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/RPI-3B-V1_2-SCHEMATIC-REDUCED.pdf</p>
+
+<h4 id="詳細">詳細</h4>
+
+<ul>
+  <li>+5V / +3.3V
+    <ul>
+      <li>電源</li>
+    </ul>
+  </li>
+  <li>GPIO
+    <ul>
+      <li>General Purpose Input/Output（汎用入出力）の略</li>
+      <li>電気回路の入力、出力を制御する</li>
+    </ul>
+  </li>
+  <li>GND
+    <ul>
+      <li>いわゆるアース。電源を最後に逃すところ</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="配線">配線</h4>
+
+<p>配線は電源から始まって抵抗とLEDを通してGPIOにつなぎます。</p>
+
+<ul>
+  <li>+3.3V -&gt; 220Ω -&gt; LED -&gt; GPIO2</li>
+</ul>
+
+<h4 id="コマンド">コマンド</h4>
+
+<ul>
+  <li>GPIOを制御するファイルの格納フォルダ
+    <ul>
+      <li>/sys/class/gpio/</li>
+    </ul>
+  </li>
+  <li>GPIOの2ピンを有効
+    <ul>
+      <li><code class="highlighter-rouge">echo 2 &gt; /sys/class/gpio/export</code></li>
+    </ul>
+  </li>
+  <li>GPIOの2ピンを出力ピンとして設定
+    <ul>
+      <li><code class="highlighter-rouge">echo out &gt; /sys/class/gpio/gpio2/direction</code></li>
+    </ul>
+  </li>
+  <li>GPIOの2ピンを点灯
+    <ul>
+      <li><code class="highlighter-rouge">echo 1 &gt; /sys/class/gpio/gpio2/value</code></li>
+    </ul>
+  </li>
+  <li>GPIOの2ピンを消灯
+    <ul>
+      <li><code class="highlighter-rouge">echo 0 &gt; /sys/class/gpio/gpio2/value</code></li>
+    </ul>
+  </li>
+  <li>GPIOの2ピンを無効
+    <ul>
+      <li><code class="highlighter-rouge">echo 2 &gt; /sys/class/gpio/unexport</code></li>
+    </ul>
+  </li>
+</ul>
 
   </article>
 
