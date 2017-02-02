@@ -1,14 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ruby x HTML5</title>
-    <description>このサイトではRubyとHTML5の活用方法を探り公開していきます。 めまぐるしく変わるHTML5の仕様を追っていきRubyにフィードバックできることを目標としています。
+    <title>ino-h.com</title>
+    <description>自分が今興味のあることを備忘録的にまとめたサイトです。 内容でのフォードバック大歓迎なのでメッセージください！
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 Jan 2017 06:32:38 +0900</pubDate>
-    <lastBuildDate>Wed, 18 Jan 2017 06:32:38 +0900</lastBuildDate>
+    <link>ino-h.com/</link>
+    <atom:link href="ino-h.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 03 Feb 2017 06:30:37 +0900</pubDate>
+    <lastBuildDate>Fri, 03 Feb 2017 06:30:37 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>AWS IoT チュートリアル</title>
+        <description>&lt;h2 id=&quot;チュートリアルを読んでみる&quot;&gt;チュートリアルを読んでみる&lt;/h2&gt;
+
+&lt;p&gt;AWSアカウントを取得して、ログインをする必要がありますが、下記のチュートリアルの内容を読んでみました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://ap-northeast-1.console.aws.amazon.com/iotv2/home?region=ap-northeast-1#/tutorial-intro&quot;&gt;» チュートリアル　&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;device-gateway&quot;&gt;Device Gateway&lt;/h4&gt;
+
+&lt;p&gt;AWS IoT Device Gateway は、デバイスが AWS IoT と安全かつ効率的に通信できるようにします。&lt;br /&gt;
+異なるプロトコルを使用していても、Device Gateway経由で相互に通信ができます。&lt;br /&gt;
+Device Gateway に接続された制御ユニットから、コマンドを発行することができ、デバイスはコマンドを取得することができます。&lt;br /&gt;
+よくあるPub/Subの構成になります。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;対応プロトコル&lt;/strong&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;プロトコル&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;認証方法&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Port&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;MQTT&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Client Certificate&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;8883&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;HTTP&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Client Certificate&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;8443&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;HTTP&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;SigV4&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;443&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;MQTT + WebSocket&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;SigV4&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;443&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;ルールエンジン&quot;&gt;ルールエンジン&lt;/h4&gt;
+
+&lt;p&gt;ルールエンジンは、AWS IoTに公開された受信メッセージを評価し、定義したルールに基づいて別のものに変換して配信します。&lt;br /&gt;
+例えば下記のようなルールになります。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;コマンドが「B」の場合、ルールはメッセージを「G」に変換し、「G」を電球に中継する
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;詳しいルールの設定方法は、公式リファレンスを見てください。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html&quot;&gt;» ルールの設定方法&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ルールエンジンによるデータ処理&quot;&gt;ルールエンジンによるデータ処理&lt;/h4&gt;
+
+&lt;p&gt;ルールエンジンは、AWS LambdaやDynamoDBテーブルなどのエンドポイントにメッセージをルーティングすることもできます。&lt;/p&gt;
+
+&lt;p&gt;使用できるサービスは下記のリンクを参考にしてください。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://docs.aws.amazon.com/iot/latest/developerguide/iot-rule-actions.html&quot;&gt;» 使用できるサービス一覧&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;デバイスシャドウ&quot;&gt;デバイスシャドウ&lt;/h4&gt;
+
+&lt;p&gt;デバイスシャドウは、デバイスの電源が落ちている等で通信ができないとき、未来の状態を持続させることができます。&lt;br /&gt;
+AWS IoTを使用すると、接続されたものとやりとりすると、デバイスに直接通信するのではなく、REST APIを使用してデバイスシャドウの状態を読み取ります。&lt;/p&gt;
+
+&lt;h2 id=&quot;メニュー&quot;&gt;メニュー&lt;/h2&gt;
+
+&lt;p&gt;実際にAWS IoTのメニュー構成を確認してみます。&lt;br /&gt;
+このあたりは今後、チュートリアルの内容と照らし合わせながら少しずつ紐といて行こうと思います。&lt;/p&gt;
+
+&lt;h4 id=&quot;イメージ&quot;&gt;イメージ&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2017-01-28-dashboard.png&quot; alt=&quot;dashboard&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;構成&quot;&gt;構成&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Dashboard
+    &lt;ul&gt;
+      &lt;li&gt;Successful connections&lt;/li&gt;
+      &lt;li&gt;Messages&lt;/li&gt;
+      &lt;li&gt;Messages published&lt;/li&gt;
+      &lt;li&gt;Rules executed&lt;/li&gt;
+      &lt;li&gt;Shadow updates&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Connect
+    &lt;ul&gt;
+      &lt;li&gt;Configuring a device&lt;/li&gt;
+      &lt;li&gt;AWS IoT Button&lt;/li&gt;
+      &lt;li&gt;AWS IoT Starter Kit&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Registry
+    &lt;ul&gt;
+      &lt;li&gt;Things&lt;/li&gt;
+      &lt;li&gt;Types&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Security
+    &lt;ul&gt;
+      &lt;li&gt;Certificates&lt;/li&gt;
+      &lt;li&gt;Policies&lt;/li&gt;
+      &lt;li&gt;CAs&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Rules&lt;/li&gt;
+  &lt;li&gt;Test&lt;/li&gt;
+  &lt;li&gt;Settings&lt;/li&gt;
+  &lt;li&gt;Learn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;まとめ&quot;&gt;まとめ&lt;/h2&gt;
+
+&lt;p&gt;AWS IoTを使うことによって多数あるデバイスを一斉に制御したり、デバイスが一時的に使用できない場合でも、スムーズに同期することが容易にできます。&lt;br /&gt;
+あとはルールの設定により、デバイスからの通信を受けて、様々なAWSのサービスへつなげれることによっていろいろなことが実現できそうです。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 03 Feb 2017 00:00:00 +0900</pubDate>
+        <link>ino-h.com/blog/2017/02/03/aws-iot.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2017/02/03/aws-iot.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>Raspberry Pi3 でLチカをやってみた</title>
@@ -97,8 +233,8 @@ DushButtonだけでは何もできないのでとりあえずAmazonでラズパ�
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 18 Jan 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2017/01/18/l-chika.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/01/18/l-chika.html</guid>
+        <link>ino-h.com/blog/2017/01/18/l-chika.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2017/01/18/l-chika.html</guid>
         
         
         <category>blog</category>
@@ -148,8 +284,8 @@ DushButtonだけでは何もできないのでとりあえずAmazonでラズパ�
 通常はまることはないと思いますがGEMコマンドにはgit必須ということで備忘録です。&lt;/p&gt;
 </description>
         <pubDate>Thu, 12 Mar 2015 05:24:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/03/12/create-gem-command.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/03/12/create-gem-command.html</guid>
+        <link>ino-h.com/blog/2015/03/12/create-gem-command.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/03/12/create-gem-command.html</guid>
         
         
         <category>blog</category>
@@ -215,8 +351,8 @@ Impress.jsだと人気もあり良さそうかと思いましたが使う人を�
 世の中の技術も大きく変わってきたので次期のプロダクトとしてどんどん新しいことを取り込み作成したいと思います。&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Mar 2015 12:52:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/03/10/slide-template.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/03/10/slide-template.html</guid>
+        <link>ino-h.com/blog/2015/03/10/slide-template.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/03/10/slide-template.html</guid>
         
         
         <category>blog</category>
@@ -307,8 +443,8 @@ Python標準パッケージ管理システム&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 22 Feb 2015 18:45:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/22/package.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/22/package.html</guid>
+        <link>ino-h.com/blog/2015/02/22/package.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/22/package.html</guid>
         
         
         <category>blog</category>
@@ -352,8 +488,8 @@ ShadowDOMを使用すれば外部要因を気にせず部品の提供ができ�
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 23:01:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/19/startup-shadow-dom.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/19/startup-shadow-dom.html</guid>
+        <link>ino-h.com/blog/2015/02/19/startup-shadow-dom.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-shadow-dom.html</guid>
         
         
         <category>blog</category>
@@ -464,8 +600,8 @@ javascriptを含めることでイベント登録もあわせてできます。&
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 05:45:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/19/startup-template.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/19/startup-template.html</guid>
+        <link>ino-h.com/blog/2015/02/19/startup-template.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-template.html</guid>
         
         
         <category>blog</category>
@@ -592,8 +728,8 @@ HTML Importsを使うことでサーバを通さずにHTML,javascript,CSSを一�
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 11 Feb 2015 05:52:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/11/startup-html-imports.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/11/startup-html-imports.html</guid>
+        <link>ino-h.com/blog/2015/02/11/startup-html-imports.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/11/startup-html-imports.html</guid>
         
         
         <category>blog</category>
@@ -738,8 +874,8 @@ MyButton = document.registerElement('my-button', {prototype: MyButtonProto});
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 08 Feb 2015 15:21:33 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/08/startup-custom-elements.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/08/startup-custom-elements.html</guid>
+        <link>ino-h.com/blog/2015/02/08/startup-custom-elements.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/08/startup-custom-elements.html</guid>
         
         
         <category>blog</category>
@@ -769,8 +905,8 @@ MyButton = document.registerElement('my-button', {prototype: MyButtonProto});
 
 </description>
         <pubDate>Sat, 07 Feb 2015 15:21:33 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/07/startup-webcomponents.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/07/startup-webcomponents.html</guid>
+        <link>ino-h.com/blog/2015/02/07/startup-webcomponents.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/07/startup-webcomponents.html</guid>
         
         
         <category>blog</category>

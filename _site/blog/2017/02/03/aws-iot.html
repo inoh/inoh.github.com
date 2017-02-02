@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>パッケージ管理ソフトを調べてみた</title>
-  <meta name="description" content="パッケージ管理ソフト">
+  <title>AWS IoT チュートリアル</title>
+  <meta name="description" content="チュートリアルを読んでみる">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="ino-h.com/blog/2015/02/22/package.html">
+  <link rel="canonical" href="ino-h.com/blog/2017/02/03/aws-iot.html">
   <link rel="alternate" type="application/rss+xml" title="ino-h.com" href="ino-h.com/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
@@ -54,91 +54,135 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">パッケージ管理ソフトを調べてみた</h1>
-    <p class="post-meta">2015/02/22</p>
+    <h1 class="post-title">AWS IoT チュートリアル</h1>
+    <p class="post-meta">2017/02/03</p>
   </header>
 
   <article class="post-content">
-    <h1 id="パッケージ管理ソフト"><strong>パッケージ管理ソフト</strong></h1>
+    <h2 id="チュートリアルを読んでみる">チュートリアルを読んでみる</h2>
 
-<p>最近では新しい開発環境や技術検証を行う中でいろいろなパッケージ管理ソフトがでてきました。<br />
-ネットをコピペしてやるのはよいけどいろいろな管理ソフトがあって管理が煩雑になってきたので調べてみました。</p>
+<p>AWSアカウントを取得して、ログインをする必要がありますが、下記のチュートリアルの内容を読んでみました。</p>
 
-<h1 id="os系"><strong>OS系</strong></h1>
+<p><a href="https://ap-northeast-1.console.aws.amazon.com/iotv2/home?region=ap-northeast-1#/tutorial-intro">» チュートリアル　</a></p>
 
-<p>この辺りは新しいものではないけど私がよく使う物をあげてみました。</p>
+<h4 id="device-gateway">Device Gateway</h4>
+
+<p>AWS IoT Device Gateway は、デバイスが AWS IoT と安全かつ効率的に通信できるようにします。<br />
+異なるプロトコルを使用していても、Device Gateway経由で相互に通信ができます。<br />
+Device Gateway に接続された制御ユニットから、コマンドを発行することができ、デバイスはコマンドを取得することができます。<br />
+よくあるPub/Subの構成になります。</p>
+
+<p><strong>対応プロトコル</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">プロトコル</th>
+      <th style="text-align: left">認証方法</th>
+      <th style="text-align: left">Port</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">MQTT</td>
+      <td style="text-align: left">Client Certificate</td>
+      <td style="text-align: left">8883</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">HTTP</td>
+      <td style="text-align: left">Client Certificate</td>
+      <td style="text-align: left">8443</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">HTTP</td>
+      <td style="text-align: left">SigV4</td>
+      <td style="text-align: left">443</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">MQTT + WebSocket</td>
+      <td style="text-align: left">SigV4</td>
+      <td style="text-align: left">443</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="ルールエンジン">ルールエンジン</h4>
+
+<p>ルールエンジンは、AWS IoTに公開された受信メッセージを評価し、定義したルールに基づいて別のものに変換して配信します。<br />
+例えば下記のようなルールになります。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>コマンドが「B」の場合、ルールはメッセージを「G」に変換し、「G」を電球に中継する
+</code></pre>
+</div>
+
+<p>詳しいルールの設定方法は、公式リファレンスを見てください。</p>
+
+<p><a href="http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html">» ルールの設定方法</a></p>
+
+<h4 id="ルールエンジンによるデータ処理">ルールエンジンによるデータ処理</h4>
+
+<p>ルールエンジンは、AWS LambdaやDynamoDBテーブルなどのエンドポイントにメッセージをルーティングすることもできます。</p>
+
+<p>使用できるサービスは下記のリンクを参考にしてください。</p>
+
+<p><a href="http://docs.aws.amazon.com/iot/latest/developerguide/iot-rule-actions.html">» 使用できるサービス一覧</a></p>
+
+<h4 id="デバイスシャドウ">デバイスシャドウ</h4>
+
+<p>デバイスシャドウは、デバイスの電源が落ちている等で通信ができないとき、未来の状態を持続させることができます。<br />
+AWS IoTを使用すると、接続されたものとやりとりすると、デバイスに直接通信するのではなく、REST APIを使用してデバイスシャドウの状態を読み取ります。</p>
+
+<h2 id="メニュー">メニュー</h2>
+
+<p>実際にAWS IoTのメニュー構成を確認してみます。<br />
+このあたりは今後、チュートリアルの内容と照らし合わせながら少しずつ紐といて行こうと思います。</p>
+
+<h4 id="イメージ">イメージ</h4>
+
+<p><img src="/images/2017-01-28-dashboard.png" alt="dashboard" /></p>
+
+<h4 id="構成">構成</h4>
 
 <ul>
-  <li>Linux
+  <li>Dashboard
     <ul>
-      <li>RPM<br />
-RedHat用のパッケージ管理システム</li>
-      <li>Yum<br />
-RPMを管理するためのシステム</li>
-      <li>APT<br />
-Debian用のパッケージ管理システム</li>
+      <li>Successful connections</li>
+      <li>Messages</li>
+      <li>Messages published</li>
+      <li>Rules executed</li>
+      <li>Shadow updates</li>
     </ul>
   </li>
-  <li>Mac
+  <li>Connect
     <ul>
-      <li>dmg<br />
-管理システムではないけど仮想ディスクイメージで複数のファイルがまとめれる</li>
-      <li>Homebrew<br />
-OS X用のパッケージ管理システム<br />
-調べて初めて知ったけどgitとRubyでできているらしい</li>
+      <li>Configuring a device</li>
+      <li>AWS IoT Button</li>
+      <li>AWS IoT Starter Kit</li>
     </ul>
   </li>
-  <li>Windows
+  <li>Registry
     <ul>
-      <li>Windowsインストーラー<br />
-Windows標準のプログラムと機能を管理</li>
-      <li>Chocolatey<br />
-標準では入ってないけどコマンドベースでインストール管理ができる</li>
+      <li>Things</li>
+      <li>Types</li>
     </ul>
   </li>
+  <li>Security
+    <ul>
+      <li>Certificates</li>
+      <li>Policies</li>
+      <li>CAs</li>
+    </ul>
+  </li>
+  <li>Rules</li>
+  <li>Test</li>
+  <li>Settings</li>
+  <li>Learn</li>
 </ul>
 
-<h1 id="言語系"><strong>言語系</strong></h1>
+<h2 id="まとめ">まとめ</h2>
 
-<p>最近増えだしたのが言語系パッケージ管理システムです。<br />
-新しい言語はだいたい管理ソフトもセットで実装されてますね。</p>
-
-<ul>
-  <li>Ruby
-    <ul>
-      <li>rubygems<br />
-Ruby標準パッケージ管理システム</li>
-    </ul>
-  </li>
-  <li>javascript(Node.js)
-    <ul>
-      <li>npm<br />
-Node.js標準パッケージ管理システム</li>
-      <li>Bower<br />
-javascript用のパッケージ管理システム<br />
-npmでインストール</li>
-    </ul>
-  </li>
-  <li>Python
-    <ul>
-      <li>pip<br />
-Python標準パッケージ管理システム</li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="その他"><strong>その他</strong></h1>
-
-<ul>
-  <li>GitHub<br />
-ある意味最近の王道と言える管理システムですね</li>
-</ul>
-
-<h1 id="参考"><strong>参考</strong></h1>
-
-<ul>
-  <li><a href="http://ja.wikipedia.org/wiki/%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E7%AE%A1%E7%90%86%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0">http://ja.wikipedia.org/wiki/パッケージ管理ソフト</a></li>
-</ul>
+<p>AWS IoTを使うことによって多数あるデバイスを一斉に制御したり、デバイスが一時的に使用できない場合でも、スムーズに同期することが容易にできます。<br />
+あとはルールの設定により、デバイスからの通信を受けて、様々なAWSのサービスへつなげれることによっていろいろなことが実現できそうです。</p>
 
   </article>
 
