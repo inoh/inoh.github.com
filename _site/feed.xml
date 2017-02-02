@@ -4,19 +4,21 @@
     <title>ino-h.com</title>
     <description>自分が今興味のあることを備忘録的にまとめたサイトです。 内容でのフォードバック大歓迎なのでメッセージください！
 </description>
-    <link>ino-h.com/</link>
-    <atom:link href="ino-h.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 03 Feb 2017 06:30:37 +0900</pubDate>
-    <lastBuildDate>Fri, 03 Feb 2017 06:30:37 +0900</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 03 Feb 2017 06:33:02 +0900</pubDate>
+    <lastBuildDate>Fri, 03 Feb 2017 06:33:02 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
     
       <item>
         <title>AWS IoT チュートリアル</title>
         <description>&lt;h2 id=&quot;チュートリアルを読んでみる&quot;&gt;チュートリアルを読んでみる&lt;/h2&gt;
 
-&lt;p&gt;AWSアカウントを取得して、ログインをする必要がありますが、下記のチュートリアルの内容を読んでみました。&lt;/p&gt;
+&lt;p&gt;下記のチュートリアルの内容を読んでみました。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://ap-northeast-1.console.aws.amazon.com/iotv2/home?region=ap-northeast-1#/tutorial-intro&quot;&gt;» チュートリアル　&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;チュートリアルを見るためには、AWSアカウントを取得して、ログインをする必要があります。&lt;/p&gt;
 
 &lt;h4 id=&quot;device-gateway&quot;&gt;Device Gateway&lt;/h4&gt;
 
@@ -138,8 +140,8 @@ AWS IoTを使用すると、接続されたものとやりとりすると、デ�
 あとはルールの設定により、デバイスからの通信を受けて、様々なAWSのサービスへつなげれることによっていろいろなことが実現できそうです。&lt;/p&gt;
 </description>
         <pubDate>Fri, 03 Feb 2017 00:00:00 +0900</pubDate>
-        <link>ino-h.com/blog/2017/02/03/aws-iot.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2017/02/03/aws-iot.html</guid>
+        <link>http://localhost:4000/blog/2017/02/03/aws-iot.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2017/02/03/aws-iot.html</guid>
         
         
         <category>blog</category>
@@ -233,8 +235,8 @@ DushButtonだけでは何もできないのでとりあえずAmazonでラズパ�
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 18 Jan 2017 00:00:00 +0900</pubDate>
-        <link>ino-h.com/blog/2017/01/18/l-chika.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2017/01/18/l-chika.html</guid>
+        <link>http://localhost:4000/blog/2017/01/18/l-chika.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2017/01/18/l-chika.html</guid>
         
         
         <category>blog</category>
@@ -284,8 +286,8 @@ DushButtonだけでは何もできないのでとりあえずAmazonでラズパ�
 通常はまることはないと思いますがGEMコマンドにはgit必須ということで備忘録です。&lt;/p&gt;
 </description>
         <pubDate>Thu, 12 Mar 2015 05:24:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/03/12/create-gem-command.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/03/12/create-gem-command.html</guid>
+        <link>http://localhost:4000/blog/2015/03/12/create-gem-command.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/03/12/create-gem-command.html</guid>
         
         
         <category>blog</category>
@@ -351,8 +353,8 @@ Impress.jsだと人気もあり良さそうかと思いましたが使う人を�
 世の中の技術も大きく変わってきたので次期のプロダクトとしてどんどん新しいことを取り込み作成したいと思います。&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Mar 2015 12:52:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/03/10/slide-template.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/03/10/slide-template.html</guid>
+        <link>http://localhost:4000/blog/2015/03/10/slide-template.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/03/10/slide-template.html</guid>
         
         
         <category>blog</category>
@@ -443,8 +445,8 @@ Python標準パッケージ管理システム&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 22 Feb 2015 18:45:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/22/package.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/22/package.html</guid>
+        <link>http://localhost:4000/blog/2015/02/22/package.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/22/package.html</guid>
         
         
         <category>blog</category>
@@ -488,8 +490,8 @@ ShadowDOMを使用すれば外部要因を気にせず部品の提供ができ�
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 23:01:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/19/startup-shadow-dom.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-shadow-dom.html</guid>
+        <link>http://localhost:4000/blog/2015/02/19/startup-shadow-dom.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/19/startup-shadow-dom.html</guid>
         
         
         <category>blog</category>
@@ -600,8 +602,8 @@ javascriptを含めることでイベント登録もあわせてできます。&
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 05:45:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/19/startup-template.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-template.html</guid>
+        <link>http://localhost:4000/blog/2015/02/19/startup-template.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/19/startup-template.html</guid>
         
         
         <category>blog</category>
@@ -728,8 +730,8 @@ HTML Importsを使うことでサーバを通さずにHTML,javascript,CSSを一�
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 11 Feb 2015 05:52:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/11/startup-html-imports.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/11/startup-html-imports.html</guid>
+        <link>http://localhost:4000/blog/2015/02/11/startup-html-imports.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/11/startup-html-imports.html</guid>
         
         
         <category>blog</category>
@@ -874,8 +876,8 @@ MyButton = document.registerElement('my-button', {prototype: MyButtonProto});
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 08 Feb 2015 15:21:33 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/08/startup-custom-elements.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/08/startup-custom-elements.html</guid>
+        <link>http://localhost:4000/blog/2015/02/08/startup-custom-elements.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/08/startup-custom-elements.html</guid>
         
         
         <category>blog</category>
@@ -905,8 +907,8 @@ MyButton = document.registerElement('my-button', {prototype: MyButtonProto});
 
 </description>
         <pubDate>Sat, 07 Feb 2015 15:21:33 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/07/startup-webcomponents.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/07/startup-webcomponents.html</guid>
+        <link>http://localhost:4000/blog/2015/02/07/startup-webcomponents.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/07/startup-webcomponents.html</guid>
         
         
         <category>blog</category>
