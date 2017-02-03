@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>WebComponentsをはじめてみる</title>
-  <meta name="description" content="WebComponentsの機能">
+  <title>AWS IoT にデバイスを登録してテストする</title>
+  <meta name="description" content="AWS IoT に接続">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/blog/2015/02/07/startup-webcomponents.html">
+  <link rel="canonical" href="http://localhost:4000/blog/2017/02/04/aws-iot-post.html">
   <link rel="alternate" type="application/rss+xml" title="ino-h.com" href="http://localhost:4000/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
@@ -56,30 +56,115 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">WebComponentsをはじめてみる</h1>
-    <p class="post-meta">2015/02/07</p>
+    <h1 class="post-title">AWS IoT にデバイスを登録してテストする</h1>
+    <p class="post-meta">2017/02/04</p>
   </header>
 
   <article class="post-content">
-    <h1 id="webcomponentsの機能"><strong>WebComponentsの機能</strong></h1>
+    <h2 id="aws-iot-に接続">AWS IoT に接続</h2>
 
-<p>WebComponentsはHTML,javascript,CSSをまとめて部品化するための標準仕様です。<br />
-まだChrome以外では未実装なブラウザが多いですがpolyfillを使用することにより実装可能です。<br />
-今回はWebComponentsで何ができるんだ！というところで触ってみた結果をまとめてみました。</p>
+<p>Pythonを使って AWS IoT に接続してみます。<br />
+リファレンスは下記のリンクになります。</p>
 
-<p>WebComponentsは大きく４つの機能が存在します。</p>
+<p><a href="https://ap-northeast-1.console.aws.amazon.com/iotv2/home?region=ap-northeast-1#/connectdevice/">» リファレンス</a></p>
+
+<p>接続するため、以下の流れで作業を行います。</p>
 
 <ul>
-  <li>Custom Elements</li>
-  <li>HTML Imports</li>
-  <li>Templates</li>
-  <li>Shadow DOM</li>
+  <li>デバイスの登録</li>
+  <li>SDKをダウンロード</li>
+  <li>デバイスの設定とテスト</li>
 </ul>
 
-<p><a href="http://caniuse.com/#search=components">※各種ブラウザのサポート状況はこちら</a></p>
+<h4 id="デバイス登録">デバイス登録</h4>
 
-<p>これらの４つの機能をそれぞれ検証してみようと思います。</p>
+<p>まずはAWS IoT にデバイスを登録します。</p>
 
+<p><img src="/images/2017-02-04-connect-step1.png" alt="デバイス登録の画面" /></p>
+
+<h4 id="sdkをダウンロード">SDKをダウンロード</h4>
+
+<p>PythonのSDKダウンロード確認画面が表示されます。<br />
+その他には先ほど登録したデバイス名とポリシーが表示されています。</p>
+
+<p><img src="/images/2017-02-04-connect-step2.png" alt="SDKをダウンロード" /></p>
+
+<p>ダウンロードしたファイルの中身を確認するとこのファイルが入っています。<br />
+SDKといっても接続用のシェルと証明書が入っているだけみたいです。</p>
+
+<ul>
+  <li>start.sh</li>
+  <li>TemperatureSensor.cert.pem</li>
+  <li>TemperatureSensor.private.key</li>
+  <li>TemperatureSensor.public.key</li>
+</ul>
+
+<h4 id="デバイスの設定とテスト">デバイスの設定とテスト</h4>
+
+<p>最後にダウンロードしたSDKの使用手順が表示れます。</p>
+
+<p><img src="/images/2017-02-04-connect-step3.png" alt="デバイスの設定とテスト" /></p>
+
+<p>接続したデバイスにSDKを入れ、手順に従い実行します。<br />
+単純にラズパイ３上で実行するとこんなエラーが発生しました。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>error: could not create '/usr/local/lib/python2.7/dist-packages/AWSIoTPythonSDK': Permission denied
+</code></pre>
+</div>
+
+<p>権限が足りないようなので <code class="highlighter-rouge">./start.sh</code> で実行していたところを <code class="highlighter-rouge">sudo ./start.sh</code> に変えてもう１回実行。<br />
+そしたらこんなエラーに変わりました。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ImportError: No module named AWSIoTPythonSDK.MQTTLib
+</code></pre>
+</div>
+
+<p>何かモジュールが足りてないようですね。。。<br />
+これを入れてみます。</p>
+
+<p><a href="https://pypi.python.org/pypi/AWSIoTPythonSDK/1.0.0">» 追加するモジュール</a></p>
+
+<p>下記のコマンド手順で不足しているモジュールをインストールします。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> &gt; wget https://pypi.python.org/packages/b8/41/ec9d0786b4ae9f6d205a68cf96ade89414337ebaabb88740f02477d840fa/AWSIoTPythonSDK-1.0.0.tar.gz
+ &gt; tar xfvz AWSIoTPythonSDK-1.0.0.tar.gz
+ &gt; cd AWSIoTPythonSDK-1.0.0
+ &gt; chmod +x setup.py
+ &gt; sudo python ./setup.py install
+</code></pre>
+</div>
+
+<p>これでもう一回 <code class="highlighter-rouge">sudo ./start.sh</code> を実行します。<br />
+次にブラウザに戻って確認するとなにやらログが流れているのが確認できます。</p>
+
+<p><img src="/images/2017-02-04-connect-send-message.png" alt="登録確認" /></p>
+
+<p>そして <code class="highlighter-rouge">Send message</code> ボタンでメッセージを送信し、最後にコンソールを確認するとブラウザで入力した内容が表示されます。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ew Message 104
+from topic:
+sdk/test/Python
+--------------
+
+
+Received a new message:
+test
+from topic:
+sdk/test/Python
+--------------
+
+
+2017-02-03 21:30:39,547 - AWSIoTPythonSDK.core.protocol.mqttCore - DEBUG - Try to put a publish request 107 in the TCP stack.
+2017-02-03 21:30:39,548 - AWSIoTPythonSDK.core.protocol.mqttCore - DEBUG - Publish request 107 succeeded.
+</code></pre>
+</div>
+
+<h2 id="まとめ">まとめ</h2>
+
+<p>デバイスの登録に関しては画面の指示に従いそのまま入力するばほぼ完了できます。<br />
+この登録が完了すると次のチュートリアルが表示されるのでこのあたりを次はやってみようかなと思います。</p>
+
+<p><img src="/images/2017-02-04-connect-next.png" alt="次のチュートリアル" /></p>
 
   </article>
 
