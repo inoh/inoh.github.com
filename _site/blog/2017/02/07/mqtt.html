@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>AWS IoT チュートリアル</title>
-  <meta name="description" content="チュートリアルを読んでみる">
+  <title>ラズパイ３上のPythonでMQTTの通信をやってみる</title>
+  <meta name="description" content="MQTTとは">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="ino-h.com/blog/2017/02/03/aws-iot.html">
+  <link rel="canonical" href="ino-h.com/blog/2017/02/07/mqtt.html">
   <link rel="alternate" type="application/rss+xml" title="ino-h.com" href="ino-h.com/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
@@ -56,137 +56,140 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">AWS IoT チュートリアル</h1>
-    <p class="post-meta">2017/02/03</p>
+    <h1 class="post-title">ラズパイ３上のPythonでMQTTの通信をやってみる</h1>
+    <p class="post-meta">2017/02/07</p>
   </header>
 
   <article class="post-content">
-    <h2 id="チュートリアルを読んでみる">チュートリアルを読んでみる</h2>
+    <h2 id="mqttとは">MQTTとは</h2>
 
-<p>下記のチュートリアルの内容を読んでみました。</p>
+<p>まずはなんの略か？</p>
 
-<p><a href="https://ap-northeast-1.console.aws.amazon.com/iotv2/home?region=ap-northeast-1#/tutorial-intro">» チュートリアル　</a></p>
-
-<p>チュートリアルを見るためには、AWSアカウントを取得して、ログインをする必要があります。</p>
-
-<h4 id="device-gateway">Device Gateway</h4>
-
-<p>AWS IoT Device Gateway は、デバイスが AWS IoT と安全かつ効率的に通信できるようにします。<br />
-異なるプロトコルを使用していても、Device Gateway経由で相互に通信ができます。<br />
-Device Gateway に接続された制御ユニットから、コマンドを発行することができ、デバイスはコマンドを取得することができます。<br />
-よくあるPub/Subの構成になります。</p>
-
-<p><strong>対応プロトコル</strong></p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">プロトコル</th>
-      <th style="text-align: left">認証方法</th>
-      <th style="text-align: left">Port</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">MQTT</td>
-      <td style="text-align: left">Client Certificate</td>
-      <td style="text-align: left">8883</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">HTTP</td>
-      <td style="text-align: left">Client Certificate</td>
-      <td style="text-align: left">8443</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">HTTP</td>
-      <td style="text-align: left">SigV4</td>
-      <td style="text-align: left">443</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">MQTT + WebSocket</td>
-      <td style="text-align: left">SigV4</td>
-      <td style="text-align: left">443</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4 id="ルールエンジン">ルールエンジン</h4>
-
-<p>ルールエンジンは、AWS IoTに公開された受信メッセージを評価し、定義したルールに基づいて別のものに変換して配信します。<br />
-例えば下記のようなルールになります。</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>コマンドが「B」の場合、ルールはメッセージを「G」に変換し、「G」を電球に中継する
+<div class="highlighter-rouge"><pre class="highlight"><code>MQTT（Message Queue Telemetry Transport）
 </code></pre>
 </div>
 
-<p>詳しいルールの設定方法は、公式リファレンスを見てください。</p>
+<p>直訳すると「メッセージキューを使って遠隔測定法で輸送する」という感じ。<br />
+メッセージキューなのでよくある Pub/Sub のモデルを採用した通信方法です。</p>
 
-<p><a href="http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html">» ルールの設定方法</a></p>
+<h2 id="basicpubsubpy">basicPubSub.py</h2>
 
-<h4 id="ルールエンジンによるデータ処理">ルールエンジンによるデータ処理</h4>
+<p>最初のデバイス登録で使用した <code class="highlighter-rouge">setup.sh</code> を確認してみます。<br />
+その中で下記のサンプルプログラムを動かしていることが確認できます。</p>
 
-<p>ルールエンジンは、AWS LambdaやDynamoDBテーブルなどのエンドポイントにメッセージをルーティングすることもできます。</p>
+<p><a href="https://github.com/aws/aws-iot-device-sdk-python/blob/master/samples/basicPubSub/basicPubSub.py">サンプルプログラム</a></p>
 
-<p>使用できるサービスは下記のリンクを参考にしてください。</p>
+<p>このサンプルプログラムを読み解くといろいろと見えてきました。</p>
 
-<p><a href="http://docs.aws.amazon.com/iot/latest/developerguide/iot-rule-actions.html">» 使用できるサービス一覧</a></p>
-
-<h4 id="デバイスシャドウ">デバイスシャドウ</h4>
-
-<p>デバイスシャドウは、デバイスの電源が落ちている等で通信ができないとき、未来の状態を持続させることができます。<br />
-AWS IoTを使用すると、接続されたものとやりとりすると、デバイスに直接通信するのではなく、REST APIを使用してデバイスシャドウの状態を読み取ります。</p>
-
-<h2 id="メニュー">メニュー</h2>
-
-<p>実際にAWS IoTのメニュー構成を確認してみます。<br />
-このあたりは今後、チュートリアルの内容と照らし合わせながら少しずつ紐といて行こうと思います。</p>
-
-<h4 id="イメージ">イメージ</h4>
-
-<p><img src="/images/2017-01-28-dashboard.png" alt="dashboard" /></p>
-
-<h4 id="構成">構成</h4>
+<h2 id="setupshの引数">setup.shの引数</h2>
 
 <ul>
-  <li>Dashboard
+  <li>–endpont xxxxx.iot.ap-northeast-1.amazonaws.com
     <ul>
-      <li>Successful connections</li>
-      <li>Messages</li>
-      <li>Messages published</li>
-      <li>Rules executed</li>
-      <li>Shadow updates</li>
+      <li>Your AWS IoT custom endpoint</li>
+      <li>変数：host</li>
     </ul>
   </li>
-  <li>Connect
+  <li>–rootCA root-CA.crt
     <ul>
-      <li>Configuring a device</li>
-      <li>AWS IoT Button</li>
-      <li>AWS IoT Starter Kit</li>
+      <li>Root CA file path</li>
+      <li>ルート認証局の証明書</li>
+      <li>変数：rootCAPath</li>
     </ul>
   </li>
-  <li>Registry
+  <li>–cert xxxxx.cert.pem
     <ul>
-      <li>Things</li>
-      <li>Types</li>
+      <li>Certificate file path</li>
+      <li>X.509証明書。複数のサーバ証明書を1ファイルに連結させることができる</li>
+      <li>変数：certificatePath</li>
     </ul>
   </li>
-  <li>Security
+  <li>–key xxxxx.private.key
     <ul>
-      <li>Certificates</li>
-      <li>Policies</li>
-      <li>CAs</li>
+      <li>Private key file path
+  AWSのアクセスプライベートキー</li>
+      <li>変数：privateKeyPath</li>
     </ul>
   </li>
-  <li>Rules</li>
-  <li>Test</li>
-  <li>Settings</li>
-  <li>Learn</li>
 </ul>
 
-<h2 id="まとめ">まとめ</h2>
+<h2 id="使用ライブラリ">使用ライブラリ</h2>
 
-<p>AWS IoTを使うことによって多数あるデバイスを一斉に制御したり、デバイスが一時的に使用できない場合でも、スムーズに同期することが容易にできます。<br />
-あとはルールの設定により、デバイスからの通信を受けて、様々なAWSのサービスへつなげれることによっていろいろなことが実現できそうです。</p>
+<ul>
+  <li>from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient</li>
+  <li>import sys</li>
+  <li>import logging</li>
+  <li>import time</li>
+  <li>import getopt</li>
+</ul>
+
+<h2 id="init-awsiotmqttclient">Init AWSIoTMQTTClient</h2>
+
+<p>サンプルプログラムではPythonの <code class="highlighter-rouge">AWSIoTMQTTClient</code> を使用してAWSとの接続確認を行います。</p>
+
+<h4 id="mqtt">MQTT</h4>
+
+<p>MQTTのみで通信を行う場合の設定になります。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>myAWSIoTMQTTClient = AWSIoTMQTTClient("basicPubSub")
+myAWSIoTMQTTClient.configureEndpoint(host, 8883)
+myAWSIoTMQTTClient.configureCredentials(rootCAPath, privateKeyPath, certificatePath)
+</code></pre>
+</div>
+
+<h4 id="mqttwebsocket">MQTT+WebSocket</h4>
+
+<p>MQTTとWebsocketで通信を行う場合の設定になります。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># Init AWSIoTMQTTClient
+myAWSIoTMQTTClient = AWSIoTMQTTClient("basicPubSub", useWebsocket=True)
+myAWSIoTMQTTClient.configureEndpoint(host, 443)
+myAWSIoTMQTTClient.configureCredentials(rootCAPath)
+</code></pre>
+</div>
+
+<h2 id="awsiotmqttclient-connection-configuration">AWSIoTMQTTClient connection configuration</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>myAWSIoTMQTTClient.configureAutoReconnectBackoffTime(1, 32, 20)
+# Infinite offline Publish queueing
+myAWSIoTMQTTClient.configureOfflinePublishQueueing(-1)
+# Draining: 2 Hz
+myAWSIoTMQTTClient.configureDrainingFrequency(2)
+# 10 sec
+myAWSIoTMQTTClient.configureConnectDisconnectTimeout(10)
+# 5 sec
+myAWSIoTMQTTClient.configureMQTTOperationTimeout(5)
+</code></pre>
+</div>
+
+<h2 id="connect-and-subscribe">Connect and subscribe</h2>
+
+<p>AWSに接続を行い <code class="highlighter-rouge">sdk/test/Python</code> というトピックをsubscribeします。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def customCallback(client, userdata, message):
+	print("Received a new message: ")
+	print(message.payload)
+	print("from topic: ")
+	print(message.topic)
+	print("--------------\n\n")
+
+myAWSIoTMQTTClient.connect()
+myAWSIoTMQTTClient.subscribe("sdk/test/Python", 1, customCallback)
+time.sleep(2)
+</code></pre>
+</div>
+
+<h2 id="publish">Publish</h2>
+
+<p><code class="highlighter-rouge">sdk/test/Python</code> に対して１秒間隔でpublishします。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>loopCount = 0
+while True:
+	myAWSIoTMQTTClient.publish("sdk/test/Python", "New Message " + str(loopCount), 1)
+	loopCount += 1
+	time.sleep(1)
+</code></pre>
+</div>
 
   </article>
 

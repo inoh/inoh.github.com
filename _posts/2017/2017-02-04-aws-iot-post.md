@@ -66,13 +66,13 @@ ImportError: No module named AWSIoTPythonSDK.MQTTLib
 
 下記のコマンド手順で不足しているモジュールをインストールします。
 
- ```
- > wget https://pypi.python.org/packages/b8/41/ec9d0786b4ae9f6d205a68cf96ade89414337ebaabb88740f02477d840fa/AWSIoTPythonSDK-1.0.0.tar.gz
- > tar xfvz AWSIoTPythonSDK-1.0.0.tar.gz
- > cd AWSIoTPythonSDK-1.0.0
- > chmod +x setup.py
- > sudo python ./setup.py install
- ```
+```
+> wget https://pypi.python.org/packages/b8/41/ec9d0786b4ae9f6d205a68cf96ade89414337ebaabb88740f02477d840fa/AWSIoTPythonSDK-1.0.0.tar.gz
+> tar xfvz AWSIoTPythonSDK-1.0.0.tar.gz
+> cd AWSIoTPythonSDK-1.0.0
+> chmod +x setup.py
+> sudo python ./setup.py install
+```
 
 これでもう一回 `sudo ./start.sh` を実行します。  
 次にブラウザに戻って確認するとなにやらログが流れているのが確認できます。

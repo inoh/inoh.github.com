@@ -4,11 +4,152 @@
     <title>ino-h.com</title>
     <description>自分が今興味のあることを備忘録的にまとめたサイトです。 内容でのフォードバック大歓迎なのでメッセージください！
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 04 Feb 2017 06:40:49 +0900</pubDate>
-    <lastBuildDate>Sat, 04 Feb 2017 06:40:49 +0900</lastBuildDate>
+    <link>ino-h.com/</link>
+    <atom:link href="ino-h.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 15 Feb 2017 05:43:49 +0900</pubDate>
+    <lastBuildDate>Wed, 15 Feb 2017 05:43:49 +0900</lastBuildDate>
     <generator>Jekyll v3.3.1</generator>
+    
+      <item>
+        <title>ラズパイ３上のPythonでMQTTの通信をやってみる</title>
+        <description>&lt;h2 id=&quot;mqttとは&quot;&gt;MQTTとは&lt;/h2&gt;
+
+&lt;p&gt;まずはなんの略か？&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MQTT（Message Queue Telemetry Transport）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;直訳すると「メッセージキューを使って遠隔測定法で輸送する」という感じ。&lt;br /&gt;
+メッセージキューなのでよくある Pub/Sub のモデルを採用した通信方法です。&lt;/p&gt;
+
+&lt;h2 id=&quot;basicpubsubpy&quot;&gt;basicPubSub.py&lt;/h2&gt;
+
+&lt;p&gt;最初のデバイス登録で使用した &lt;code class=&quot;highlighter-rouge&quot;&gt;setup.sh&lt;/code&gt; を確認してみます。&lt;br /&gt;
+その中で下記のサンプルプログラムを動かしていることが確認できます。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/aws/aws-iot-device-sdk-python/blob/master/samples/basicPubSub/basicPubSub.py&quot;&gt;サンプルプログラム&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;このサンプルプログラムを読み解くといろいろと見えてきました。&lt;/p&gt;
+
+&lt;h2 id=&quot;setupshの引数&quot;&gt;setup.shの引数&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;–endpont xxxxx.iot.ap-northeast-1.amazonaws.com
+    &lt;ul&gt;
+      &lt;li&gt;Your AWS IoT custom endpoint&lt;/li&gt;
+      &lt;li&gt;変数：host&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;–rootCA root-CA.crt
+    &lt;ul&gt;
+      &lt;li&gt;Root CA file path&lt;/li&gt;
+      &lt;li&gt;ルート認証局の証明書&lt;/li&gt;
+      &lt;li&gt;変数：rootCAPath&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;–cert xxxxx.cert.pem
+    &lt;ul&gt;
+      &lt;li&gt;Certificate file path&lt;/li&gt;
+      &lt;li&gt;X.509証明書。複数のサーバ証明書を1ファイルに連結させることができる&lt;/li&gt;
+      &lt;li&gt;変数：certificatePath&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;–key xxxxx.private.key
+    &lt;ul&gt;
+      &lt;li&gt;Private key file path
+  AWSのアクセスプライベートキー&lt;/li&gt;
+      &lt;li&gt;変数：privateKeyPath&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;使用ライブラリ&quot;&gt;使用ライブラリ&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTClient&lt;/li&gt;
+  &lt;li&gt;import sys&lt;/li&gt;
+  &lt;li&gt;import logging&lt;/li&gt;
+  &lt;li&gt;import time&lt;/li&gt;
+  &lt;li&gt;import getopt&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;init-awsiotmqttclient&quot;&gt;Init AWSIoTMQTTClient&lt;/h2&gt;
+
+&lt;p&gt;サンプルプログラムではPythonの &lt;code class=&quot;highlighter-rouge&quot;&gt;AWSIoTMQTTClient&lt;/code&gt; を使用してAWSとの接続確認を行います。&lt;/p&gt;
+
+&lt;h4 id=&quot;mqtt&quot;&gt;MQTT&lt;/h4&gt;
+
+&lt;p&gt;MQTTのみで通信を行う場合の設定になります。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;myAWSIoTMQTTClient = AWSIoTMQTTClient(&quot;basicPubSub&quot;)
+myAWSIoTMQTTClient.configureEndpoint(host, 8883)
+myAWSIoTMQTTClient.configureCredentials(rootCAPath, privateKeyPath, certificatePath)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;mqttwebsocket&quot;&gt;MQTT+WebSocket&lt;/h4&gt;
+
+&lt;p&gt;MQTTとWebsocketで通信を行う場合の設定になります。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# Init AWSIoTMQTTClient
+myAWSIoTMQTTClient = AWSIoTMQTTClient(&quot;basicPubSub&quot;, useWebsocket=True)
+myAWSIoTMQTTClient.configureEndpoint(host, 443)
+myAWSIoTMQTTClient.configureCredentials(rootCAPath)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;awsiotmqttclient-connection-configuration&quot;&gt;AWSIoTMQTTClient connection configuration&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;myAWSIoTMQTTClient.configureAutoReconnectBackoffTime(1, 32, 20)
+# Infinite offline Publish queueing
+myAWSIoTMQTTClient.configureOfflinePublishQueueing(-1)
+# Draining: 2 Hz
+myAWSIoTMQTTClient.configureDrainingFrequency(2)
+# 10 sec
+myAWSIoTMQTTClient.configureConnectDisconnectTimeout(10)
+# 5 sec
+myAWSIoTMQTTClient.configureMQTTOperationTimeout(5)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;connect-and-subscribe&quot;&gt;Connect and subscribe&lt;/h2&gt;
+
+&lt;p&gt;AWSに接続を行い &lt;code class=&quot;highlighter-rouge&quot;&gt;sdk/test/Python&lt;/code&gt; というトピックをsubscribeします。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def customCallback(client, userdata, message):
+	print(&quot;Received a new message: &quot;)
+	print(message.payload)
+	print(&quot;from topic: &quot;)
+	print(message.topic)
+	print(&quot;--------------\n\n&quot;)
+
+myAWSIoTMQTTClient.connect()
+myAWSIoTMQTTClient.subscribe(&quot;sdk/test/Python&quot;, 1, customCallback)
+time.sleep(2)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;publish&quot;&gt;Publish&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sdk/test/Python&lt;/code&gt; に対して１秒間隔でpublishします。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;loopCount = 0
+while True:
+	myAWSIoTMQTTClient.publish(&quot;sdk/test/Python&quot;, &quot;New Message &quot; + str(loopCount), 1)
+	loopCount += 1
+	time.sleep(1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 07 Feb 2017 00:00:00 +0900</pubDate>
+        <link>ino-h.com/blog/2017/02/07/mqtt.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2017/02/07/mqtt.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>AWS IoT にデバイスを登録してテストする</title>
@@ -77,11 +218,11 @@ SDKといっても接続用のシェルと証明書が入っているだけみ�
 
 &lt;p&gt;下記のコマンド手順で不足しているモジュールをインストールします。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &amp;gt; wget https://pypi.python.org/packages/b8/41/ec9d0786b4ae9f6d205a68cf96ade89414337ebaabb88740f02477d840fa/AWSIoTPythonSDK-1.0.0.tar.gz
- &amp;gt; tar xfvz AWSIoTPythonSDK-1.0.0.tar.gz
- &amp;gt; cd AWSIoTPythonSDK-1.0.0
- &amp;gt; chmod +x setup.py
- &amp;gt; sudo python ./setup.py install
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; wget https://pypi.python.org/packages/b8/41/ec9d0786b4ae9f6d205a68cf96ade89414337ebaabb88740f02477d840fa/AWSIoTPythonSDK-1.0.0.tar.gz
+&amp;gt; tar xfvz AWSIoTPythonSDK-1.0.0.tar.gz
+&amp;gt; cd AWSIoTPythonSDK-1.0.0
+&amp;gt; chmod +x setup.py
+&amp;gt; sudo python ./setup.py install
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -118,8 +259,8 @@ sdk/test/Python
 &lt;p&gt;&lt;img src=&quot;/images/2017-02-04-connect-next.png&quot; alt=&quot;次のチュートリアル&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 04 Feb 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2017/02/04/aws-iot-post.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/02/04/aws-iot-post.html</guid>
+        <link>ino-h.com/blog/2017/02/04/aws-iot-post.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2017/02/04/aws-iot-post.html</guid>
         
         
         <category>blog</category>
@@ -256,8 +397,8 @@ AWS IoTを使用すると、接続されたものとやりとりすると、デ�
 あとはルールの設定により、デバイスからの通信を受けて、様々なAWSのサービスへつなげれることによっていろいろなことが実現できそうです。&lt;/p&gt;
 </description>
         <pubDate>Fri, 03 Feb 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2017/02/03/aws-iot.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/02/03/aws-iot.html</guid>
+        <link>ino-h.com/blog/2017/02/03/aws-iot.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2017/02/03/aws-iot.html</guid>
         
         
         <category>blog</category>
@@ -351,8 +492,8 @@ DushButtonだけでは何もできないのでとりあえずAmazonでラズパ�
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 18 Jan 2017 00:00:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2017/01/18/l-chika.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2017/01/18/l-chika.html</guid>
+        <link>ino-h.com/blog/2017/01/18/l-chika.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2017/01/18/l-chika.html</guid>
         
         
         <category>blog</category>
@@ -402,8 +543,8 @@ DushButtonだけでは何もできないのでとりあえずAmazonでラズパ�
 通常はまることはないと思いますがGEMコマンドにはgit必須ということで備忘録です。&lt;/p&gt;
 </description>
         <pubDate>Thu, 12 Mar 2015 05:24:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/03/12/create-gem-command.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/03/12/create-gem-command.html</guid>
+        <link>ino-h.com/blog/2015/03/12/create-gem-command.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/03/12/create-gem-command.html</guid>
         
         
         <category>blog</category>
@@ -469,8 +610,8 @@ Impress.jsだと人気もあり良さそうかと思いましたが使う人を�
 世の中の技術も大きく変わってきたので次期のプロダクトとしてどんどん新しいことを取り込み作成したいと思います。&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Mar 2015 12:52:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/03/10/slide-template.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/03/10/slide-template.html</guid>
+        <link>ino-h.com/blog/2015/03/10/slide-template.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/03/10/slide-template.html</guid>
         
         
         <category>blog</category>
@@ -561,8 +702,8 @@ Python標準パッケージ管理システム&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 22 Feb 2015 18:45:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/22/package.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/22/package.html</guid>
+        <link>ino-h.com/blog/2015/02/22/package.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/22/package.html</guid>
         
         
         <category>blog</category>
@@ -606,8 +747,8 @@ ShadowDOMを使用すれば外部要因を気にせず部品の提供ができ�
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 23:01:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/19/startup-shadow-dom.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/19/startup-shadow-dom.html</guid>
+        <link>ino-h.com/blog/2015/02/19/startup-shadow-dom.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-shadow-dom.html</guid>
         
         
         <category>blog</category>
@@ -718,8 +859,8 @@ javascriptを含めることでイベント登録もあわせてできます。&
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 05:45:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/19/startup-template.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/19/startup-template.html</guid>
+        <link>ino-h.com/blog/2015/02/19/startup-template.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-template.html</guid>
         
         
         <category>blog</category>
@@ -846,154 +987,8 @@ HTML Importsを使うことでサーバを通さずにHTML,javascript,CSSを一�
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 11 Feb 2015 05:52:00 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/11/startup-html-imports.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/11/startup-html-imports.html</guid>
-        
-        
-        <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title>Custom Elements で独自要素を作成する</title>
-        <description>&lt;h1 id=&quot;custom-elements&quot;&gt;&lt;strong&gt;Custom Elements&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;Custome Elements では標準タグとは別に&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;my-tag&amp;gt;&amp;lt;/my-tag&amp;gt;&lt;/code&gt;のような独自のタグを作成することができます。&lt;br /&gt;
-独自のタグを定義するためには&lt;code class=&quot;highlighter-rouge&quot;&gt;document.registerElement()&lt;/code&gt;を使用します。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyTag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'my-tag'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Chrome以外のブラウザではまだまだ未実装なのでpolyfillを実装しておきましょう。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bower_components/webcomponentsjs/webcomponents.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;命名規約&quot;&gt;命名規約&lt;/h1&gt;
-
-&lt;p&gt;Custom Elements では標準タグと切り分けるために命名規約が存在します。&lt;br /&gt;
-独自に作成したタグには必ず’&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;‘を含める必要があります。&lt;/p&gt;
-
-&lt;h4 id=&quot;ok&quot;&gt;OK&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;my-tag&lt;/li&gt;
-  &lt;li&gt;my-original-tag&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;ng&quot;&gt;NG&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;mytag&lt;/li&gt;
-  &lt;li&gt;my_tag&lt;/li&gt;
-  &lt;li&gt;MyTag&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;とりあえず使ってみる&quot;&gt;とりあえず使ってみる&lt;/h1&gt;
-
-&lt;p&gt;最初は単純に使ったタグを流し込んでみます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;javascript&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyTag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'my-tag'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;cm&quot;&gt;/* ↑ HTMLElementを継承したものと同じらしい
-var MyTag = document.registerElement('my-tag', {
-  prototype: Object.create(HTMLElement.prototype)
-});
-*/&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myTag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;myTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;demo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;#components&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;HTML&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;components&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;実行結果&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;div id=&quot;demo01&quot;&gt;&lt;/div&gt;&lt;/pre&gt;
-&lt;script&gt;
-var MyTag = document.registerElement('my-tag');
-var myTag = new MyTag();
-myTag.innerHTML = &quot;demo&quot;;
-document.querySelector(&quot;#demo01&quot;).appendChild(myTag);
-&lt;/script&gt;
-
-&lt;h1 id=&quot;応用編&quot;&gt;応用編&lt;/h1&gt;
-
-&lt;p&gt;単純にタグを流し込むだけでは面白くないので独自のボタンを作ってみます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;javascript&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyButtonProto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;HTMLButtonElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;MyButtonProto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createdCallback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;MyButton&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'click'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'click!'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;MyButton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'my-button'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyButtonProto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;HTML&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;my-button&amp;gt;&amp;lt;/my-button&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;実行結果&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;「MyButton」をクリックしてみてください。&lt;/p&gt;
-
-&lt;script&gt;
-var MyButtonProto = Object.create(HTMLButtonElement.prototype);
-MyButtonProto.createdCallback = function () {
-  this.innerHTML = &quot;MyButton&quot;;
-  this.addEventListener('click', function(e) {
-    alert('click!');
-  });
-};
-MyButton = document.registerElement('my-button', {prototype: MyButtonProto});
-&lt;/script&gt;
-
-&lt;pre&gt;&lt;my-button&gt;&lt;/my-button&gt;&lt;/pre&gt;
-
-&lt;h1 id=&quot;まとめ&quot;&gt;まとめ&lt;/h1&gt;
-
-&lt;p&gt;Custom Elements を使うことで要素の種類を明確化できます。&lt;br /&gt;
-プログラムを作る際に特定のクラス名やカスタム属性を拾う必要もなくイベントの登録やスタイルの制御ができます。&lt;br /&gt;
-また独自の属性も追加し放題なのでより柔軟に業務独自の処理が実装できると思います。&lt;/p&gt;
-
-&lt;h1 id=&quot;参考&quot;&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;polyfill
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;http://webcomponents.org/&quot;&gt;http://webcomponents.org/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Custome Elements
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;http://webcomponents.org/articles/introduction-to-custom-elements/&quot;&gt;http://webcomponents.org/articles/introduction-to-custom-elements/&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/ja/tutorials/webcomponents/customelements/&quot;&gt;http://www.html5rocks.com/ja/tutorials/webcomponents/customelements/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;リファレンス
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/API/HTMLButtonElement&quot;&gt;https://developer.mozilla.org/ja/docs/Web/API/HTMLButtonElement&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Sun, 08 Feb 2015 15:21:33 +0900</pubDate>
-        <link>http://localhost:4000/blog/2015/02/08/startup-custom-elements.html</link>
-        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/08/startup-custom-elements.html</guid>
+        <link>ino-h.com/blog/2015/02/11/startup-html-imports.html</link>
+        <guid isPermaLink="true">ino-h.com/blog/2015/02/11/startup-html-imports.html</guid>
         
         
         <category>blog</category>
