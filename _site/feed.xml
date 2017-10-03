@@ -4,11 +4,55 @@
     <title>ino-h.com</title>
     <description>自分が今興味のあることを備忘録的にまとめたサイトです。 内容でのフォードバック大歓迎なのでメッセージください！
 </description>
-    <link>ino-h.com/</link>
-    <atom:link href="ino-h.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 15 Feb 2017 05:45:02 +0900</pubDate>
-    <lastBuildDate>Wed, 15 Feb 2017 05:45:02 +0900</lastBuildDate>
-    <generator>Jekyll v3.3.1</generator>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 03 Oct 2017 10:12:42 +0900</pubDate>
+    <lastBuildDate>Tue, 03 Oct 2017 10:12:42 +0900</lastBuildDate>
+    <generator>Jekyll v3.4.2</generator>
+    
+      <item>
+        <title>react-native をとりあえずビルドして動かして見る</title>
+        <description>&lt;p&gt;React Native の公式サイト &lt;a href=&quot;http://facebook.github.io/react-native/docs/getting-started.html&quot;&gt;Getting Started&lt;/a&gt; をとりあえず読んでみます。&lt;/p&gt;
+
+&lt;p&gt;WebでReactを作るときには &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-app&lt;/code&gt; というのがありますが Native なアプリでも同様なものがあるようです。&lt;br /&gt;
+とりあえずコマンドらしきものを写経してみます。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; npm install -g create-react-native-app
+&amp;gt; ~/.ndenv/versions/v6.9.5/bin/create-react-native-app AwesomeProject
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;なぜか &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-native-app&lt;/code&gt; のパスが通ってなかったのでフルパスを指定しました。&lt;br /&gt;
+初期プロジェクトを作成したらそのまま起動します。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; cd AwesomeProject
+&amp;gt; npm start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;実行すると &lt;code class=&quot;highlighter-rouge&quot;&gt;watchman&lt;/code&gt; をインストールするか次のコマンドを実行しろとエラーになりました。&lt;br /&gt;
+調べて見るとオープンできるファイルの数が足りなかったのと、使用可能なファイル記述子を増やすコマンドらしいです。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; sudo sysctl -w kern.maxfiles=5242880
+&amp;gt; sudo sysctl -w kern.maxfilesperproc=524288
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;このオプションを変更し再度 &lt;code class=&quot;highlighter-rouge&quot;&gt;npm start&lt;/code&gt; を実行すると画面にQRコードが表示されます。&lt;br /&gt;
+あとは &lt;code class=&quot;highlighter-rouge&quot;&gt;Expo Client&lt;/code&gt; というアプリを落としてきてアプリ経由でQRコードを読み込むと自動でアプリのビルドが走って &lt;code class=&quot;highlighter-rouge&quot;&gt;App.js&lt;/code&gt; を編集してねって画面が表示されます。&lt;br /&gt;
+簡単すぎてこれでいいのかって気になってきます。&lt;/p&gt;
+
+&lt;p&gt;あとはReactの仕様とReactNative独自のコンポーネントを覚えながら粛々と作っていくだけかなと思います。&lt;br /&gt;
+これからいろいろと触って遊んでみよう！&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Oct 2017 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/blog/2017/10/03/create-react-native-app.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2017/10/03/create-react-native-app.html</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>ラズパイ３上のPythonでMQTTの通信をやってみる</title>
@@ -143,8 +187,8 @@ while True:
 &lt;/div&gt;
 </description>
         <pubDate>Wed, 15 Feb 2017 00:00:00 +0900</pubDate>
-        <link>ino-h.com/blog/2017/02/15/mqtt.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2017/02/15/mqtt.html</guid>
+        <link>http://localhost:4000/blog/2017/02/15/mqtt.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2017/02/15/mqtt.html</guid>
         
         
         <category>blog</category>
@@ -259,8 +303,8 @@ sdk/test/Python
 &lt;p&gt;&lt;img src=&quot;/images/2017-02-04-connect-next.png&quot; alt=&quot;次のチュートリアル&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 04 Feb 2017 00:00:00 +0900</pubDate>
-        <link>ino-h.com/blog/2017/02/04/aws-iot-post.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2017/02/04/aws-iot-post.html</guid>
+        <link>http://localhost:4000/blog/2017/02/04/aws-iot-post.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2017/02/04/aws-iot-post.html</guid>
         
         
         <category>blog</category>
@@ -397,8 +441,8 @@ AWS IoTを使用すると、接続されたものとやりとりすると、デ�
 あとはルールの設定により、デバイスからの通信を受けて、様々なAWSのサービスへつなげれることによっていろいろなことが実現できそうです。&lt;/p&gt;
 </description>
         <pubDate>Fri, 03 Feb 2017 00:00:00 +0900</pubDate>
-        <link>ino-h.com/blog/2017/02/03/aws-iot.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2017/02/03/aws-iot.html</guid>
+        <link>http://localhost:4000/blog/2017/02/03/aws-iot.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2017/02/03/aws-iot.html</guid>
         
         
         <category>blog</category>
@@ -492,8 +536,8 @@ DushButtonだけでは何もできないのでとりあえずAmazonでラズパ�
 &lt;/ul&gt;
 </description>
         <pubDate>Wed, 18 Jan 2017 00:00:00 +0900</pubDate>
-        <link>ino-h.com/blog/2017/01/18/l-chika.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2017/01/18/l-chika.html</guid>
+        <link>http://localhost:4000/blog/2017/01/18/l-chika.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2017/01/18/l-chika.html</guid>
         
         
         <category>blog</category>
@@ -543,8 +587,8 @@ DushButtonだけでは何もできないのでとりあえずAmazonでラズパ�
 通常はまることはないと思いますがGEMコマンドにはgit必須ということで備忘録です。&lt;/p&gt;
 </description>
         <pubDate>Thu, 12 Mar 2015 05:24:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/03/12/create-gem-command.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/03/12/create-gem-command.html</guid>
+        <link>http://localhost:4000/blog/2015/03/12/create-gem-command.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/03/12/create-gem-command.html</guid>
         
         
         <category>blog</category>
@@ -610,8 +654,8 @@ Impress.jsだと人気もあり良さそうかと思いましたが使う人を�
 世の中の技術も大きく変わってきたので次期のプロダクトとしてどんどん新しいことを取り込み作成したいと思います。&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Mar 2015 12:52:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/03/10/slide-template.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/03/10/slide-template.html</guid>
+        <link>http://localhost:4000/blog/2015/03/10/slide-template.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/03/10/slide-template.html</guid>
         
         
         <category>blog</category>
@@ -702,8 +746,8 @@ Python標準パッケージ管理システム&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Sun, 22 Feb 2015 18:45:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/22/package.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/22/package.html</guid>
+        <link>http://localhost:4000/blog/2015/02/22/package.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/22/package.html</guid>
         
         
         <category>blog</category>
@@ -747,8 +791,8 @@ ShadowDOMを使用すれば外部要因を気にせず部品の提供ができ�
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 23:01:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/19/startup-shadow-dom.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-shadow-dom.html</guid>
+        <link>http://localhost:4000/blog/2015/02/19/startup-shadow-dom.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/19/startup-shadow-dom.html</guid>
         
         
         <category>blog</category>
@@ -859,136 +903,8 @@ javascriptを含めることでイベント登録もあわせてできます。&
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 05:45:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/19/startup-template.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/19/startup-template.html</guid>
-        
-        
-        <category>blog</category>
-        
-      </item>
-    
-      <item>
-        <title>HTML Importsで楽をする方法</title>
-        <description>&lt;h1 id=&quot;html-imports&quot;&gt;&lt;strong&gt;HTML Imports&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;HTML ImportsはHTML,javascript,CSSをまとめてテンプート化する仕組みです。&lt;br /&gt;
-今までもbootstrapのようにjavascriptやCSSを外出ししjavascriptでHTMLを操作することで実現はできていました。&lt;br /&gt;
-ただ一式を制御するために決まった形を毎回コピーペーストするのが一般的だと思います。&lt;br /&gt;
-HTML Importsを使用するとjavascriptやCSSを個別定義することなく下記のようにlinkひとつで定義できます。&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;import&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;html-imports.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;bootstrapをテンプレート化&quot;&gt;&lt;strong&gt;Bootstrapをテンプレート化&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;HTML Importsを使用してBootstrapを簡略化しています。&lt;br /&gt;
-テンプレート部分を見ると大変そうに見えますが実際の実装は少ないことがわかります。&lt;br /&gt;
-これらの簡略化をサーバ側の処理を通さずにできることがすごいことだと思います。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;テンプレート&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://getbootstrap.com/dist/css/bootstrap.min.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;padding-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;.starter-template&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;40px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;15px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;text-align&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!--[if lt IE 9]&amp;gt;
-&amp;lt;script src=&quot;https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script src=&quot;https://oss.maxcdn.com/respond/1.4.2/respond.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;![endif]--&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://getbootstrap.com/dist/js/bootstrap.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;template&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;nav&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar navbar-inverse navbar-fixed-top&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar-header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;button&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar-toggle collapsed&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-toggle=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;collapse&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#navbar&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-expanded=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;aria-controls=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sr-only&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Toggle navigation&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icon-bar&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icon-bar&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;icon-bar&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar-brand&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Project name&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;navbar&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;collapse navbar-collapse&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nav navbar-nav&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;active&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Home&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#about&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;About&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#contact&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Contact&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--/.nav-collapse --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/nav&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/template&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;HTMLElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createdCallback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'link[rel=&quot;import&quot;]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;querySelector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'template'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;innerHTML&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'x-bootstrap-header'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;実装&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/js/webcomponents.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;import&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/template/2015-02-11-bootstrap.html&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;x-bootstrap-header&amp;gt;&amp;lt;/x-bootstrap-header&amp;gt;&lt;/span&gt;
-    
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;starter-template&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Header&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;lead&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Contents&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;実行結果&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;iframe src=&quot;/template/2015-02-11-bootstrap-view.html&quot; style=&quot;width: 100%; height: 300px;&quot;&gt;&lt;/iframe&gt;
-
-&lt;h1 id=&quot;まとめ&quot;&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/h1&gt;
-
-&lt;p&gt;通常HTMLをテンプレート化するためにはサーバで行うかjavascriptでがりがりDOMを作り込んでやるのが一般的でした。&lt;br /&gt;
-HTML Importsを使うことでサーバを通さずにHTML,javascript,CSSを一式テンプレート化するこができ、決まった形式を使い回すのにもとても便利に感じました。&lt;/p&gt;
-
-&lt;h1 id=&quot;参考&quot;&gt;&lt;strong&gt;参考&lt;/strong&gt;&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;HTML Imports
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;http://www.html5rocks.com/ja/tutorials/webcomponents/imports/&quot;&gt;http://www.html5rocks.com/ja/tutorials/webcomponents/imports/&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 11 Feb 2015 05:52:00 +0900</pubDate>
-        <link>ino-h.com/blog/2015/02/11/startup-html-imports.html</link>
-        <guid isPermaLink="true">ino-h.com/blog/2015/02/11/startup-html-imports.html</guid>
+        <link>http://localhost:4000/blog/2015/02/19/startup-template.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2015/02/19/startup-template.html</guid>
         
         
         <category>blog</category>

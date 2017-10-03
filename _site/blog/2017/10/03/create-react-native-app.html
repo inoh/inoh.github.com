@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>WebComponentsをはじめてみる</title>
-  <meta name="description" content="WebComponentsの機能">
+  <title>react-native をとりあえずビルドして動かして見る</title>
+  <meta name="description" content="React Native の公式サイト Getting Started をとりあえず読んでみます。">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/blog/2015/02/07/startup-webcomponents.html">
+  <link rel="canonical" href="http://localhost:4000/blog/2017/10/03/create-react-native-app.html">
   <link rel="alternate" type="application/rss+xml" title="ino-h.com" href="http://localhost:4000/feed.xml" />
   <script src="/js/webcomponents.min.js"></script>
 </head>
@@ -56,30 +56,43 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">WebComponentsをはじめてみる</h1>
-    <p class="post-meta">2015/02/07</p>
+    <h1 class="post-title">react-native をとりあえずビルドして動かして見る</h1>
+    <p class="post-meta">2017/10/03</p>
   </header>
 
   <article class="post-content">
-    <h1 id="webcomponentsの機能"><strong>WebComponentsの機能</strong></h1>
+    <p>React Native の公式サイト <a href="http://facebook.github.io/react-native/docs/getting-started.html">Getting Started</a> をとりあえず読んでみます。</p>
 
-<p>WebComponentsはHTML,javascript,CSSをまとめて部品化するための標準仕様です。<br />
-まだChrome以外では未実装なブラウザが多いですがpolyfillを使用することにより実装可能です。<br />
-今回はWebComponentsで何ができるんだ！というところで触ってみた結果をまとめてみました。</p>
+<p>WebでReactを作るときには <code class="highlighter-rouge">create-react-app</code> というのがありますが Native なアプリでも同様なものがあるようです。<br />
+とりあえずコマンドらしきものを写経してみます。</p>
 
-<p>WebComponentsは大きく４つの機能が存在します。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; npm install -g create-react-native-app
+&gt; ~/.ndenv/versions/v6.9.5/bin/create-react-native-app AwesomeProject
+</code></pre>
+</div>
 
-<ul>
-  <li>Custom Elements</li>
-  <li>HTML Imports</li>
-  <li>Templates</li>
-  <li>Shadow DOM</li>
-</ul>
+<p>なぜか <code class="highlighter-rouge">create-react-native-app</code> のパスが通ってなかったのでフルパスを指定しました。<br />
+初期プロジェクトを作成したらそのまま起動します。</p>
 
-<p><a href="http://caniuse.com/#search=components">※各種ブラウザのサポート状況はこちら</a></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; cd AwesomeProject
+&gt; npm start
+</code></pre>
+</div>
 
-<p>これらの４つの機能をそれぞれ検証してみようと思います。</p>
+<p>実行すると <code class="highlighter-rouge">watchman</code> をインストールするか次のコマンドを実行しろとエラーになりました。<br />
+調べて見るとオープンできるファイルの数が足りなかったのと、使用可能なファイル記述子を増やすコマンドらしいです。</p>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt; sudo sysctl -w kern.maxfiles=5242880
+&gt; sudo sysctl -w kern.maxfilesperproc=524288
+</code></pre>
+</div>
+
+<p>このオプションを変更し再度 <code class="highlighter-rouge">npm start</code> を実行すると画面にQRコードが表示されます。<br />
+あとは <code class="highlighter-rouge">Expo Client</code> というアプリを落としてきてアプリ経由でQRコードを読み込むと自動でアプリのビルドが走って <code class="highlighter-rouge">App.js</code> を編集してねって画面が表示されます。<br />
+簡単すぎてこれでいいのかって気になってきます。</p>
+
+<p>あとはReactの仕様とReactNative独自のコンポーネントを覚えながら粛々と作っていくだけかなと思います。<br />
+これからいろいろと触って遊んでみよう！</p>
 
   </article>
 
